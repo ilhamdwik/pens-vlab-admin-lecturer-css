@@ -1,18 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter,
-  Switch,
-  Redirect,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
 import { Provider as ReduxProvider, useSelector } from "react-redux";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { persistor, RootState, store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
-import { useCookies } from "react-cookie";
-import { ToastContainer, Slide, toast } from "react-toastify";
+import { ToastContainer, Slide } from "react-toastify";
 import axios from "axios";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -47,6 +40,7 @@ import UpsertLecturers from "./pages/Lecturers/Upsert";
 import Quizzes from "./pages/Quizzes/index";
 import Submission from "./pages/Quizzes/Submission";
 import UpsertQuizzes from "./pages/Quizzes/Upsert";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const contextClass = {
   success: "bg-blue-600",
@@ -72,158 +66,171 @@ declare global {
 }
 
 const Navigation = () => {
-  const [cookies] = useCookies(["vlabToken"]);
   const { user } = useSelector((state: RootState) => state.auth);
+  const token = useSelector((state: RootState) => state.auth.token);
 
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
 
   return (
     <BrowserRouter>
       <Switch>
         {/* only use in DEV */}
-        {/* <Route
+        <Route
           path="/vlab-admin/___dummy-login___"
           exact
           component={DummyLogin}
-        /> */}
-        {cookies.vlabToken ? (
-          <Layout>
-            {user?.isAdmin ? (
-              <Switch>
-                <Route path="/vlab-admin/home" exact component={Home} />
-                <Route
-                  path="/vlab-admin/data/classes"
-                  exact
-                  component={Classes}
-                />
-                <Route
-                  path="/vlab-admin/data/classes/create"
-                  exact
-                  component={UpsertClass}
-                />
-                <Route
-                  path="/vlab-admin/data/classes/update/:id"
-                  exact
-                  component={UpsertClass}
-                />
-                <Route path="/vlab-admin/data/roles" exact component={Roles} />
-                <Route
-                  path="/vlab-admin/data/roles/create"
-                  exact
-                  component={UpsertRoles}
-                />
-                <Route
-                  path="/vlab-admin/data/roles/update/:id"
-                  exact
-                  component={UpsertRoles}
-                />
-                <Route
-                  path="/vlab-admin/data/courses"
-                  exact
-                  component={Courses}
-                />
-                <Route
-                  path="/vlab-admin/data/courses/create"
-                  exact
-                  component={UpsertCourses}
-                />
-                <Route
-                  path="/vlab-admin/data/courses/update/:id"
-                  exact
-                  component={UpsertCourses}
-                />
-                <Route
-                  path="/vlab-admin/data/modules"
-                  exact
-                  component={Modules}
-                />
-                <Route
-                  path="/vlab-admin/data/modules/create"
-                  exact
-                  component={UpsertModules}
-                />
-                <Route
-                  path="/vlab-admin/data/modules/update/:id"
-                  exact
-                  component={UpsertModules}
-                />
-                <Route
-                  path="/vlab-admin/data/lessons"
-                  exact
-                  component={Lessons}
-                />
-                <Route
-                  path="/vlab-admin/data/lessons/create"
-                  exact
-                  component={UpsertLessons}
-                />
-                <Route
-                  path="/vlab-admin/data/lessons/update/:id"
-                  exact
-                  component={UpsertLessons}
-                />
-                <Route
-                  path="/vlab-admin/data/students"
-                  exact
-                  component={Students}
-                />
-                <Route
-                  path="/vlab-admin/data/students/create"
-                  exact
-                  component={UpsertStudents}
-                />
-                <Route
-                  path="/vlab-admin/data/students/update/:id"
-                  exact
-                  component={UpsertStudents}
-                />
-                <Route
-                  path="/vlab-admin/data/lecturers"
-                  exact
-                  component={Lecturers}
-                />
-                <Route
-                  path="/vlab-admin/data/lecturers/create"
-                  exact
-                  component={UpsertLecturers}
-                />
-                <Route
-                  path="/vlab-admin/data/lecturers/update/:id"
-                  exact
-                  component={UpsertLecturers}
-                />
+        />
 
-                <Redirect to="/vlab-admin/home" />
-              </Switch>
-            ) : (
+        <Route path="/vlab-admin/login" exact component={Login} />
+        <Route path="/vlab-admin/load" exact component={Loader} />
+
+        <ProtectedRoute
+          path="/vlab-admin/"
+          component={() => (
+            <Layout>
               <Switch>
-                <Route path="/vlab-admin/home" exact component={Home} />
-                <Route path="/vlab-admin/quizzes" exact component={Quizzes} />
-                <Route
-                  path="/vlab-admin/quizzes/submission/:id"
-                  exact
-                  component={Submission}
-                />
-                <Route
-                  path="/vlab-admin/quizzes/create"
-                  exact
-                  component={UpsertQuizzes}
-                />
-                <Route
-                  path="/vlab-admin/quizzes/update/:id"
-                  exact
-                  component={UpsertQuizzes}
-                />
-                <Redirect to="/vlab-admin/home" />
+                {user?.isAdmin ? (
+                  <>
+                    <Route path="/vlab-admin/home" exact component={Home} />
+                    <Route
+                      path="/vlab-admin/data/classes"
+                      exact
+                      component={Classes}
+                    />
+                    <Route
+                      path="/vlab-admin/data/classes/create"
+                      exact
+                      component={UpsertClass}
+                    />
+                    <Route
+                      path="/vlab-admin/data/classes/update/:id"
+                      exact
+                      component={UpsertClass}
+                    />
+                    <Route
+                      path="/vlab-admin/data/roles"
+                      exact
+                      component={Roles}
+                    />
+                    <Route
+                      path="/vlab-admin/data/roles/create"
+                      exact
+                      component={UpsertRoles}
+                    />
+                    <Route
+                      path="/vlab-admin/data/roles/update/:id"
+                      exact
+                      component={UpsertRoles}
+                    />
+                    <Route
+                      path="/vlab-admin/data/courses"
+                      exact
+                      component={Courses}
+                    />
+                    <Route
+                      path="/vlab-admin/data/courses/create"
+                      exact
+                      component={UpsertCourses}
+                    />
+                    <Route
+                      path="/vlab-admin/data/courses/update/:id"
+                      exact
+                      component={UpsertCourses}
+                    />
+                    <Route
+                      path="/vlab-admin/data/modules"
+                      exact
+                      component={Modules}
+                    />
+                    <Route
+                      path="/vlab-admin/data/modules/create"
+                      exact
+                      component={UpsertModules}
+                    />
+                    <Route
+                      path="/vlab-admin/data/modules/update/:id"
+                      exact
+                      component={UpsertModules}
+                    />
+                    <Route
+                      path="/vlab-admin/data/lessons"
+                      exact
+                      component={Lessons}
+                    />
+                    <Route
+                      path="/vlab-admin/data/lessons/create"
+                      exact
+                      component={UpsertLessons}
+                    />
+                    <Route
+                      path="/vlab-admin/data/lessons/update/:id"
+                      exact
+                      component={UpsertLessons}
+                    />
+                    <Route
+                      path="/vlab-admin/data/students"
+                      exact
+                      component={Students}
+                    />
+                    <Route
+                      path="/vlab-admin/data/students/create"
+                      exact
+                      component={UpsertStudents}
+                    />
+                    <Route
+                      path="/vlab-admin/data/students/update/:id"
+                      exact
+                      component={UpsertStudents}
+                    />
+                    <Route
+                      path="/vlab-admin/data/lecturers"
+                      exact
+                      component={Lecturers}
+                    />
+                    <Route
+                      path="/vlab-admin/data/lecturers/create"
+                      exact
+                      component={UpsertLecturers}
+                    />
+                    <Route
+                      path="/vlab-admin/data/lecturers/update/:id"
+                      exact
+                      component={UpsertLecturers}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <Route path="/vlab-admin/home" exact component={Home} />
+                    <Route
+                      path="/vlab-admin/quizzes"
+                      exact
+                      component={Quizzes}
+                    />
+                    <Route
+                      path="/vlab-admin/quizzes/submission/:id"
+                      exact
+                      component={Submission}
+                    />
+                    <Route
+                      path="/vlab-admin/quizzes/create"
+                      exact
+                      component={UpsertQuizzes}
+                    />
+                    <Route
+                      path="/vlab-admin/quizzes/update/:id"
+                      exact
+                      component={UpsertQuizzes}
+                    />
+                  </>
+                )}
               </Switch>
-            )}
-          </Layout>
-        ) : (
-          <>
-            <Route path="/vlab-admin/login" exact component={Login} />
-            <Route path="/vlab-admin/load" exact component={Loader} />
-            <Redirect to="/vlab-admin/load" />
-          </>
-        )}
+            </Layout>
+          )}
+        />
+
+        <Redirect to="/vlab-admin/load" />
       </Switch>
       <ToastContainer
         transition={Slide}
@@ -240,41 +247,6 @@ const Navigation = () => {
 };
 
 export const App = () => {
-  const [cookies] = useCookies(["vlabToken"]);
-  const history = useHistory();
-
-  axios.defaults.headers.common[
-    "Authorization"
-  ] = `Bearer ${cookies.vlabToken}`;
-
-  // React.useEffect(() => {
-  //   if (cookies.vlabToken) {
-  //     axios.defaults.headers.common[
-  //       "Authorization"
-  //     ] = `Bearer ${cookies.vlabToken}`;
-  //   } else {
-  //     axios.defaults.headers.common["Authorization"] = undefined;
-  //   }
-  // }, [cookies.vlabToken]);
-
-  React.useEffect(() => {
-    // persistor.purge();
-    // axios.interceptors.response.use(
-    //   (response) => {
-    //     return response;
-    //   },
-    //   (error: Error) => {
-    //     if (error.response.status === 401) {
-    //       //place your reentry code
-    //       toast.error("Unauthorized");
-    //       history.replace("/vlab-admin");
-    //     } else {
-    //       toast.error("Error");
-    //     }
-    //     return error;
-    //   }
-    // );
-  });
   return (
     <ReduxProvider store={store}>
       <Navigation />

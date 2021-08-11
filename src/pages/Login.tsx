@@ -1,20 +1,18 @@
 import nProgress from "nprogress";
 import React from "react";
-import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ReactComponent as LogoText } from "../assets/images/logo-text.svg";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import { postLogin } from "../redux/actions/authActions";
+import { postLogin, setToken } from "../redux/actions/authActions";
 
 const Login = () => {
   const history = useHistory();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const [, setCookie] = useCookies(["vlab/token"]);
 
   const dispatch = useDispatch();
 
@@ -30,7 +28,7 @@ const Login = () => {
         onSuccess: (res) => {
           nProgress.done();
           setLoading(false);
-          setCookie("vlabToken", res.token);
+          dispatch(setToken(res.token));
           history.replace("/vlab-admin/home");
         },
         onFailure: () => {

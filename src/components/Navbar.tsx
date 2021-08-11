@@ -6,8 +6,8 @@ import { RootState } from "../redux/store";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "../redux/actions/appActions";
 import { PayloadAction } from "typesafe-actions";
+import { setToken, setUser } from "../redux/actions/authActions";
 import { useCookies } from "react-cookie";
-import { setUser } from "../redux/actions/authActions";
 
 export const Navbar = ({
   dark,
@@ -18,18 +18,20 @@ export const Navbar = ({
 }) => {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
-  const [, , removeCookie] = useCookies(["vlabToken"]);
+  const [, , removeCookie] = useCookies(["user"]);
 
   const onLogout = () => {
-    removeCookie("vlabToken", {
-      domain: "localhost",
-      path: "/vlab-admin",
-    });
+    dispatch(setToken(undefined));
+    dispatch(setUser());
     removeCookie("user", {
-      domain: "localhost",
+      domain:
+        process.env.REACT_APP_ENV === "DEV"
+          ? process.env.REACT_APP_DOMAIN_DEV
+          : process.env.REACT_APP_DOMAIN,
       path: "/",
     });
-    dispatch(setUser());
+    localStorage.removeItem("userCas");
+    document.location.href = "https://ethol.pens.ac.id";
   };
   return (
     <div>
@@ -43,7 +45,10 @@ export const Navbar = ({
                 <>
                   <Popover.Button className="cursor-pointer flex space-x-4 items-center focus:outline-none ml-4">
                     <img
-                      src="https://ethol.pens.ac.id/api/images/user.png"
+                      src={`https://avatars.dicebear.com/api/initials/${user?.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}.svg?backgroundColors[]=blue`}
                       alt="avatar"
                       className="w-10 h-10 rounded-full"
                     />

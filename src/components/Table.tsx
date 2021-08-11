@@ -124,7 +124,7 @@ export const Table = ({
             pageLinkClassName={`border-gray-300  text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium dark:border-gray-600 dark:text-gray-200 dark:hover:bg-blueGray-700 `}
             previousLinkClassName="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 dark:bg-blueGray-800 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-blueGray-700"
             nextLinkClassName="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 dark:bg-blueGray-800 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-blueGray-700"
-            activeLinkClassName="z-10 bg-indigo-100 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium dark:bg-blueGray-700 dark:border-blueGray-700 dark:text-gray-200 dark:hover:bg-blueGray-700"
+            activeLinkClassName="bg-indigo-100 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium dark:bg-blueGray-700 dark:border-blueGray-700 dark:text-gray-200 dark:hover:bg-blueGray-700"
           />
         </div>
       ) : null}

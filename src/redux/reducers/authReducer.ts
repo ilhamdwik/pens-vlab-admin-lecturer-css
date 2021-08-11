@@ -1,7 +1,7 @@
 import { createReducer } from "typesafe-actions";
 import { users } from "../../types";
 import { AuthAction } from "../actions/actionTypes";
-import { setUser } from "../actions/authActions";
+import { setToken, setUser } from "../actions/authActions";
 
 export type User = {
   email: string;
@@ -16,16 +16,22 @@ export type User = {
 
 export interface AuthState {
   user?: User;
-  token?: string | null;
+  token?: string;
 }
 
 const initialState: AuthState = {};
 
-const authReducer = createReducer<AuthState, AuthAction>(
-  initialState
-).handleAction(setUser, (state: AuthState, action: { payload: users }) => ({
-  ...state,
-  user: action.payload,
-}));
+const authReducer = createReducer<AuthState, AuthAction>(initialState)
+  .handleAction(
+    setToken,
+    (state: AuthState, action: { payload: string | null }) => ({
+      ...state,
+      token: action.payload,
+    })
+  )
+  .handleAction(setUser, (state: AuthState, action: { payload: users }) => ({
+    ...state,
+    user: action.payload,
+  }));
 
 export default authReducer;

@@ -28,7 +28,7 @@
     "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
     "jsonwebtoken": "^8.5.1",
-    "monaco-editor": "^0.24.0",
+    "monaco-editor": "^0.25.0",
     "nprogress": "^0.2.0",
     "pikaday": "^1.8.2",
     "react": "^17.0.2",

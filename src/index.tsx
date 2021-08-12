@@ -76,11 +76,13 @@ const Navigation = () => {
     <BrowserRouter>
       <Switch>
         {/* only use in DEV */}
-        <Route
-          path="/vlab-admin/___dummy-login___"
-          exact
-          component={DummyLogin}
-        />
+        {process.env.REACT_APP_ENV === "DEV" ? (
+          <Route
+            path="/vlab-admin/___dummy-login___"
+            exact
+            component={DummyLogin}
+          />
+        ) : null}
 
         <Route path="/vlab-admin/login" exact component={Login} />
         <Route path="/vlab-admin/load" exact component={Loader} />

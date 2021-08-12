@@ -106,7 +106,7 @@ const Upsert = () => {
             nProgress.done();
             setLoading(false);
             toast.error("Something went wrong");
-            history.replace("/vlab-admin/data/quizzes");
+            history.replace("/admin/data/quizzes");
           },
           onSuccess: (res) => {
             nProgress.done();
@@ -135,7 +135,7 @@ const Upsert = () => {
             nProgress.done();
             setLoading(false);
             toast.error("Something went wrong");
-            history.replace("/vlab-admin/data/quizzes");
+            history.replace("/admin/data/quizzes");
           },
           onSuccess: (res) => {
             nProgress.done();
@@ -170,7 +170,7 @@ const Upsert = () => {
           nProgress.done();
           setLoading(false);
           toast.success("Data created!");
-          history.replace("/vlab-admin/quizzes");
+          history.replace("/admin/quizzes");
         },
         onFailure: () => {
           nProgress.done();
@@ -194,7 +194,7 @@ const Upsert = () => {
             id: id,
             onSuccess: () => {
               toast.success("Data deleted!");
-              history.replace("/vlab-admin/quizzes");
+              history.replace("/admin/quizzes");
             },
             onFailure: (err) => {
               toast.error(err);
@@ -244,7 +244,7 @@ const Upsert = () => {
             <div className="flex space-x-8 items-center">
               <Button
                 onClick={() => {
-                  history.replace("/vlab-admin/quizzes");
+                  history.replace("/admin/quizzes");
                 }}
               >
                 <i className="fas fa-arrow-left mr-4" /> Back
@@ -404,7 +404,7 @@ const Upsert = () => {
             {studentQuiz.map((v) => {
               return (
                 <Link
-                  to={`/vlab-admin/quizzes/submission/${v.quiz_id}&${v.student_id}`}
+                  to={`/admin/quizzes/submission/${v.quiz_id}&${v.student_id}`}
                 >
                   <Card
                     className={` shadow-none border-l-4 ${

@@ -106,7 +106,7 @@ const Upsert = () => {
           nProgress.done();
           setLoading(false);
           toast.error("Something went wrong");
-          history.replace("/vlab-admin/data/modules");
+          history.replace("/admin/data/modules");
         },
       })
     );
@@ -119,7 +119,7 @@ const Upsert = () => {
             nProgress.done();
             setLoading(false);
             toast.error("Something went wrong");
-            history.replace("/vlab-admin/data/lessons");
+            history.replace("/admin/data/lessons");
           },
           onSuccess: (res) => {
             nProgress.done();
@@ -166,7 +166,7 @@ const Upsert = () => {
           nProgress.done();
           setLoading(false);
           toast.success("Data created!");
-          history.replace("/vlab-admin/data/lessons");
+          history.replace("/admin/data/lessons");
         },
         onFailure: () => {
           nProgress.done();
@@ -200,7 +200,7 @@ const Upsert = () => {
           onSuccess: () => {
             setLoading(false);
             toast.success("Data updated!");
-            history.replace("/vlab-admin/data/lessons");
+            history.replace("/admin/data/lessons");
           },
           onFailure: () => {
             setLoading(false);

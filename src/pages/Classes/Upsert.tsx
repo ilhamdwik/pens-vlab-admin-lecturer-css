@@ -32,7 +32,7 @@ const UpsertClass = () => {
             nProgress.done();
             setLoading(false);
             toast.error("Something went wrong");
-            history.replace("/vlab-admin/data/classes");
+            history.replace("/admin/data/classes");
           },
           onSuccess: (res) => {
             nProgress.done();
@@ -60,7 +60,7 @@ const UpsertClass = () => {
           nProgress.done();
           setLoading(false);
           toast.success("Data created!");
-          history.replace("/vlab-admin/data/classes");
+          history.replace("/admin/data/classes");
         },
         onFailure: () => {
           nProgress.done();
@@ -85,7 +85,7 @@ const UpsertClass = () => {
           onSuccess: () => {
             setLoading(false);
             toast.success("Data updated!");
-            history.replace("/vlab-admin/data/classes");
+            history.replace("/admin/data/classes");
           },
           onFailure: () => {
             setLoading(false);

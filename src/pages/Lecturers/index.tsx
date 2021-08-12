@@ -71,7 +71,7 @@ const Lecturers = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Lecturers</div>
-              <Link to="/vlab-admin/data/lecturers/create">
+              <Link to="/admin/data/lecturers/create">
                 <Button>
                   <i className="fas fa-plus mr-4" /> New Lecturer
                 </Button>
@@ -112,7 +112,7 @@ const Lecturers = () => {
                           {/* <Button {...row.getToggleRowExpandedProps()}>
                     <i className="fas fa-eye" />
                   </Button> */}
-                          <Link to={`/vlab-admin/data/lecturers/update/${id}`}>
+                          <Link to={`/admin/data/lecturers/update/${id}`}>
                             <Button>
                               <i className="fas fa-pencil-alt" />
                             </Button>

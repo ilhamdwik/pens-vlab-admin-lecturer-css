@@ -68,7 +68,7 @@ const Roles = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Roles</div>
-              <Link to="/vlab-admin/data/roles/create">
+              <Link to="/admin/data/roles/create">
                 <Button>
                   <i className="fas fa-plus mr-4" /> New Role
                 </Button>
@@ -100,7 +100,7 @@ const Roles = () => {
                           {/* <Button {...row.getToggleRowExpandedProps()}>
                     <i className="fas fa-eye" />
                   </Button> */}
-                          <Link to={`/vlab-admin/data/roles/update/${id}`}>
+                          <Link to={`/admin/data/roles/update/${id}`}>
                             <Button>
                               <i className="fas fa-pencil-alt" />
                             </Button>

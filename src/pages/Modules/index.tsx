@@ -69,7 +69,7 @@ const Modules = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Modules</div>
-              <Link to="/vlab-admin/data/modules/create">
+              <Link to="/admin/data/modules/create">
                 <Button>
                   <i className="fas fa-plus mr-4" /> New Module
                 </Button>
@@ -120,7 +120,7 @@ const Modules = () => {
                           {/* <Button {...row.getToggleRowExpandedProps()}>
                     <i className="fas fa-eye" />
                   </Button> */}
-                          <Link to={`/vlab-admin/data/modules/update/${id}`}>
+                          <Link to={`/admin/data/modules/update/${id}`}>
                             <Button>
                               <i className="fas fa-pencil-alt" />
                             </Button>

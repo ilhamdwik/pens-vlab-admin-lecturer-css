@@ -29,7 +29,7 @@ const Login = () => {
           nProgress.done();
           setLoading(false);
           dispatch(setToken(res.token));
-          history.replace("/vlab-admin/home");
+          history.replace("/admin/home");
         },
         onFailure: () => {
           setLoading(false);

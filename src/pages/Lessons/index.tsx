@@ -128,7 +128,7 @@ const Lessons = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Lessons</div>
-              <Link to="/vlab-admin/data/lessons/create">
+              <Link to="/admin/data/lessons/create">
                 <Button>
                   <i className="fas fa-plus mr-4" /> New Lesson
                 </Button>
@@ -196,7 +196,7 @@ const Lessons = () => {
                           <Button onClick={() => setViewDetailID(id ?? "")}>
                             <i className="fas fa-eye" />
                           </Button>
-                          <Link to={`/vlab-admin/data/lessons/update/${id}`}>
+                          <Link to={`/admin/data/lessons/update/${id}`}>
                             <Button>
                               <i className="fas fa-pencil-alt" />
                             </Button>

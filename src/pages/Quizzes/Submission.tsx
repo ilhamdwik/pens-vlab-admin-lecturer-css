@@ -41,7 +41,7 @@ const Submission = () => {
         getSubmissionDetail.request({
           onFailure: () => {
             nProgress.done();
-            history.replace(`/vlab-admin/quizzez/${quizId}`);
+            history.replace(`/admin/quizzez/${quizId}`);
           },
           onSuccess: (res) => {
             nProgress.done();
@@ -93,7 +93,7 @@ const Submission = () => {
         },
         onSuccess: () => {
           nProgress.done();
-          history.replace("/vlab-admin/quizzes/update/" + quizId);
+          history.replace("/admin/quizzes/update/" + quizId);
         },
         quizId,
         studentId,

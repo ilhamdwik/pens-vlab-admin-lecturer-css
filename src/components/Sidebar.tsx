@@ -13,19 +13,19 @@ const routes: {
   routes?: { path: string; icon?: string; name: string; adminPage?: boolean }[];
 }[] = [
   {
-    path: "/vlab-admin/home", // the url
+    path: "/admin/home", // the url
     adminPage: true,
     icon: "home", // the component being exported from icons/index.js
     name: "Dashboard", // name that appear in Sidebar
   },
   {
-    path: "/vlab-lecturer/home", // the url
+    path: "/lecturer/home", // the url
     adminPage: false,
     icon: "home", // the component being exported from icons/index.js
     name: "Dashboard", // name that appear in Sidebar
   },
   {
-    path: "/vlab-lecturer/quizzes",
+    path: "/lecturer/quizzes",
     icon: "chalkboard-teacher",
     name: "Quiz",
     adminPage: false,
@@ -37,15 +37,15 @@ const routes: {
     routes: [
       // submenu
       {
-        path: "/vlab-admin/data/courses",
+        path: "/admin/data/courses",
         name: "Courses",
       },
       {
-        path: "/vlab-admin/data/modules",
+        path: "/admin/data/modules",
         name: "Modules",
       },
       {
-        path: "/vlab-admin/data/lessons",
+        path: "/admin/data/lessons",
         name: "Lessons",
       },
     ],
@@ -55,19 +55,19 @@ const routes: {
     adminPage: true,
     routes: [
       {
-        path: "/vlab-admin/data/roles",
+        path: "/admin/data/roles",
         name: "Roles",
       },
       {
-        path: "/vlab-admin/data/classes",
+        path: "/admin/data/classes",
         name: "Classes",
       },
       {
-        path: "/vlab-admin/data/students",
+        path: "/admin/data/students",
         name: "Students",
       },
       {
-        path: "/vlab-admin/data/lecturers",
+        path: "/admin/data/lecturers",
         name: "Lecturers",
       },
     ],

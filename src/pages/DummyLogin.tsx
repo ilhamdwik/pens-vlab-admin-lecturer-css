@@ -24,7 +24,7 @@ export const DummyLogin = () => {
       token:
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQ1NTQsIm5ycCI6IjIxMTAxNzEwMDkiLCJuYW1lIjoiU2hlcmx5IE1heWEgU2Fsc2FiaWxsYSIsImtlbGFzIjo0LCJwcm9ncmFtIjoiRDQiLCJqdXJ1c2FuIjoiVGVrbmlrIEluZm9ybWF0aWthIiwiaW1hZ2UiOiJodHRwczovL2V0aG9sLnBlbnMuYWMuaWQvYXBpL2ltYWdlcy91c2VyLnBuZyIsInJvbGUiOjIsImNoYXRfaWQiOiI1ZTkzYmY3ZTE1OTc0NzYxOGFkZDE3NWMiLCJpYXQiOjE2MjI1MjY3NTV9.jcjKW3ngCACQFXSw4_A7CUrWBN0gA15lZ-puFMIosGI",
     });
-    history.replace("/vlab-admin");
+    history.replace("/admin");
   };
 
   return (

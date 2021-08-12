@@ -40,9 +40,9 @@ export const Loader = () => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       if (user?.isAdmin) {
-        history.replace("/vlab-admin/home");
+        history.replace("/admin/home");
       } else {
-        history.replace("/vlab-lecturer/home");
+        history.replace("/lecturer/home");
       }
     }
   }, [token]);
@@ -79,7 +79,7 @@ export const Loader = () => {
               axios.defaults.headers.common[
                 "Authorization"
               ] = `Bearer ${token}`;
-              history.replace("/vlab-lecturer/home");
+              history.replace("/lecturer/home");
             },
           })
         );
@@ -103,7 +103,7 @@ export const Loader = () => {
           { text: "Retry", onClick: () => setShowModal(false) },
           {
             text: "Login As Admin",
-            onClick: () => history.replace("/vlab-admin/login"),
+            onClick: () => history.replace("/admin/login"),
           },
         ]}
         onClose={() => {

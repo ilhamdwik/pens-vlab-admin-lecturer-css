@@ -43,7 +43,7 @@ const Upsert = () => {
         onFailure: () => {
           nProgress.done();
           setLoading(false);
-          toast.error("Something went wrong");
+          toast.error("Terjadi Kesalahan");
           history.replace("/admin/data/modules");
         },
       })
@@ -57,7 +57,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/admin/data/modules");
           },
           onSuccess: (res) => {
@@ -82,7 +82,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
           },
           onSuccess: (res) => {
             if (res.modules) {
@@ -110,7 +110,7 @@ const Upsert = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/admin/data/modules");
         },
         onFailure: () => {
@@ -136,7 +136,7 @@ const Upsert = () => {
           },
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             history.replace("/admin/data/modules");
           },
           onFailure: () => {
@@ -158,10 +158,10 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold">
-                {id ? "Update" : "Create"} Module
+                {id ? "Edit" : "Tambah"} Modul
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -185,10 +185,10 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Modules in Course</span>
+                  <span>Modul pada Course</span>
                   <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                    <div className="w-12">Order</div>
-                    <div className="flex-1">Title</div>
+                    <div className="w-12">Urutan</div>
+                    <div className="flex-1">Nama</div>
                   </div>
                   {modulesInCourse.map((v) => (
                     <div className="flex space-x-4 p-2">
@@ -200,28 +200,28 @@ const Upsert = () => {
               </div>
               <div className="flex-1 lg:w-1/3 flex flex-col">
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Title</span>
+                  <span>Nama</span>
                   <Input
                     type="text"
-                    placeholder="Module Title"
+                    placeholder="Nama Modul"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Overview</span>
+                  <span>Deskripsi</span>
                   <Input
                     type="text"
-                    placeholder="Module Overview"
+                    placeholder="Deskripsi Modul"
                     value={overview}
                     onChange={(e) => setOverview(e.target.value)}
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Order</span>
+                  <span>Urutan</span>
                   <Input
                     type="number"
-                    placeholder="Module Order"
+                    placeholder="Urutan Modul"
                     value={order}
                     onChange={(e) => setOrder(parseInt(e.target.value))}
                   />
@@ -233,7 +233,7 @@ const Upsert = () => {
                   }
                   className=""
                 >
-                  <i className="fas fa-save mr-4" /> Save
+                  <i className="fas fa-save mr-4" /> Simpan
                 </Button>
               </div>
             </form>

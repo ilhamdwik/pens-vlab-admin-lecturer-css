@@ -38,18 +38,18 @@ const Classes = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteClass.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -67,10 +67,10 @@ const Classes = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Classes</div>
+              <div className="text-xl font-bold">Kelas</div>
               <Link to="/admin/data/classes/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Class
+                  <i className="fas fa-plus mr-4" /> Tambah Kelas
                 </Button>
               </Link>
             </div>
@@ -90,7 +90,7 @@ const Classes = () => {
                   { Header: "Jurusan", accessor: "jurusan" },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as classes).id;

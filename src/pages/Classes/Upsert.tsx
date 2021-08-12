@@ -31,7 +31,7 @@ const UpsertClass = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/admin/data/classes");
           },
           onSuccess: (res) => {
@@ -59,7 +59,7 @@ const UpsertClass = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/admin/data/classes");
         },
         onFailure: () => {
@@ -84,7 +84,7 @@ const UpsertClass = () => {
           },
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             history.replace("/admin/data/classes");
           },
           onFailure: () => {
@@ -106,10 +106,10 @@ const UpsertClass = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold">
-                {id ? "Update" : "Create"} Class
+                {id ? "Edit" : "Tambah"} Kelas
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -155,7 +155,7 @@ const UpsertClass = () => {
                 disabled={!program || !kelas || !jurusan || loading}
                 className=""
               >
-                <i className="fas fa-save mr-4" /> Save
+                <i className="fas fa-save mr-4" /> Simpan
               </Button>
             </form>
           </div>

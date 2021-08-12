@@ -16,59 +16,59 @@ const routes: {
     path: "/admin/home", // the url
     adminPage: true,
     icon: "home", // the component being exported from icons/index.js
-    name: "Dashboard", // name that appear in Sidebar
+    name: "Beranda", // name that appear in Sidebar
   },
   {
     path: "/lecturer/home", // the url
     adminPage: false,
     icon: "home", // the component being exported from icons/index.js
-    name: "Dashboard", // name that appear in Sidebar
+    name: "Beranda", // name that appear in Sidebar
   },
   {
     path: "/lecturer/quizzes",
     icon: "chalkboard-teacher",
-    name: "Quiz",
+    name: "Kuis",
     adminPage: false,
   },
 
   {
-    name: "Course Data",
+    name: "Data Course",
     adminPage: true,
     routes: [
       // submenu
       {
         path: "/admin/data/courses",
-        name: "Courses",
+        name: "Course",
       },
       {
         path: "/admin/data/modules",
-        name: "Modules",
+        name: "Modul",
       },
       {
         path: "/admin/data/lessons",
-        name: "Lessons",
+        name: "Lesson",
       },
     ],
   },
   {
-    name: "User Data",
+    name: "Data User",
     adminPage: true,
     routes: [
       {
         path: "/admin/data/roles",
-        name: "Roles",
+        name: "Role",
       },
       {
         path: "/admin/data/classes",
-        name: "Classes",
+        name: "Kelas",
       },
       {
         path: "/admin/data/students",
-        name: "Students",
+        name: "Mahasiswa",
       },
       {
         path: "/admin/data/lecturers",
-        name: "Lecturers",
+        name: "Dosen",
       },
     ],
   },

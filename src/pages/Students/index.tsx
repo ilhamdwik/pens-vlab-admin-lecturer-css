@@ -41,18 +41,18 @@ const Students = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteStudent.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -70,10 +70,10 @@ const Students = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Students</div>
+              <div className="text-xl font-bold">Mahasiswa</div>
               <Link to="/admin/data/students/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Student
+                  <i className="fas fa-plus mr-4" /> Tambah Mahasiswa
                 </Button>
               </Link>
             </div>
@@ -96,9 +96,9 @@ const Students = () => {
                       return v.users?.email;
                     },
                   },
-                  { Header: "Name", accessor: "name" },
+                  { Header: "Nama", accessor: "name" },
                   {
-                    Header: "Class",
+                    Header: "Kelas",
                     id: "class",
                     Cell: ({ row }) => {
                       const v = row.original as students;
@@ -107,7 +107,7 @@ const Students = () => {
                   },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as students).id;

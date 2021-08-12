@@ -67,18 +67,18 @@ const Lessons = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteLesson.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -94,16 +94,16 @@ const Lessons = () => {
     <div className="p-6">
       <Modal
         open={viewDetailID ? true : false}
-        title="Lesson Detail"
+        title="Detail Lesson"
         content={() => (
           <article className="  prose dark:prose-light max-w-none">
             {detail ? (
               <div>
-                <h4>Content</h4>
+                <h4>Isi</h4>
                 <Markdown markdown={detail?.contents ?? ""} />
                 {detail.is_exercise ? (
                   <div className="mt-4">
-                    <h4>Expected Output</h4>
+                    <h4>Output yang Diharapkan</h4>
                     <pre>
                       <code>{detail.submodule_exercises?.expected_output}</code>
                     </pre>
@@ -127,10 +127,10 @@ const Lessons = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Lessons</div>
+              <div className="text-xl font-bold">Lesson</div>
               <Link to="/admin/data/lessons/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Lesson
+                  <i className="fas fa-plus mr-4" /> Tambah Lesson
                 </Button>
               </Link>
             </div>
@@ -146,7 +146,7 @@ const Lessons = () => {
                 }}
                 columns={[
                   {
-                    Header: "Module",
+                    Header: "Modul",
                     id: "prog_language",
                     Cell: ({ row }) => {
                       const v = row.original as submodules;
@@ -164,10 +164,10 @@ const Lessons = () => {
                       );
                     },
                   },
-                  { Header: "Order", accessor: "order" },
-                  { Header: "Title", accessor: "title" },
+                  { Header: "Urutan pada Modul", accessor: "order" },
+                  { Header: "Nama", accessor: "title" },
                   {
-                    Header: "Is Exercise",
+                    Header: "Latihan?",
                     id: "is_exercise",
                     Cell: ({ row }) => {
                       const v = row.original as submodules;
@@ -184,7 +184,7 @@ const Lessons = () => {
                   },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as submodules).id;

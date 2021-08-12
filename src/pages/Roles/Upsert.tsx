@@ -29,7 +29,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/admin/data/roles");
           },
           onSuccess: (res) => {
@@ -53,7 +53,7 @@ const Upsert = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/admin/data/roles");
         },
         onFailure: () => {
@@ -76,7 +76,7 @@ const Upsert = () => {
           },
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             history.replace("/admin/data/roles");
           },
           onFailure: () => {
@@ -98,10 +98,10 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold">
-                {id ? "Update" : "Create"} Role
+                {id ? "Edit" : "Tambah"} Role
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -117,17 +117,17 @@ const Upsert = () => {
               className="lg:w-1/3 flex flex-col"
             >
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Role Name</span>
+                <span>Nama Role</span>
                 <Input
                   type="text"
-                  placeholder="Role Name"
+                  placeholder="Nama Role"
                   value={roleName}
                   onChange={(e) => setRoleName(e.target.value)}
                 />
               </div>
 
               <Button disabled={!roleName || loading} className="">
-                <i className="fas fa-save mr-4" /> Save
+                <i className="fas fa-save mr-4" /> Simpan
               </Button>
             </form>
           </div>

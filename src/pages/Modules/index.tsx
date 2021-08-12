@@ -39,18 +39,18 @@ const Modules = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteModule.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -68,10 +68,10 @@ const Modules = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Modules</div>
+              <div className="text-xl font-bold">Modul</div>
               <Link to="/admin/data/modules/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Module
+                  <i className="fas fa-plus mr-4" /> Tambah Modul
                 </Button>
               </Link>
             </div>
@@ -103,12 +103,12 @@ const Modules = () => {
                       );
                     },
                   },
-                  { Header: "Order", accessor: "order" },
-                  { Header: "Title", accessor: "title" },
-                  { Header: "Overview", accessor: "overview" },
+                  { Header: "Urutan pada Course", accessor: "order" },
+                  { Header: "Nama", accessor: "title" },
+                  { Header: "Deskripsi", accessor: "overview" },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as modules).id;

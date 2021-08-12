@@ -39,18 +39,18 @@ const Courses = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteCourse.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -68,10 +68,10 @@ const Courses = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Courses</div>
+              <div className="text-xl font-bold">Course</div>
               <Link to="/admin/data/courses/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Course
+                  <i className="fas fa-plus mr-4" /> Tambah Course
                 </Button>
               </Link>
             </div>
@@ -110,7 +110,7 @@ const Courses = () => {
                     },
                   },
                   {
-                    Header: "Name",
+                    Header: "Nama",
                     id: "name",
                     Cell: ({ row }) => {
                       const v = row.original as prog_languages;
@@ -125,7 +125,7 @@ const Courses = () => {
                   },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as prog_languages).id;

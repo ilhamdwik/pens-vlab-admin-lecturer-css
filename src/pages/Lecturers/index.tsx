@@ -41,18 +41,18 @@ const Lecturers = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteLecturer.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -70,10 +70,10 @@ const Lecturers = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Lecturers</div>
+              <div className="text-xl font-bold">Dosen</div>
               <Link to="/admin/data/lecturers/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Lecturer
+                  <i className="fas fa-plus mr-4" /> Tambah Dosen
                 </Button>
               </Link>
             </div>
@@ -96,11 +96,11 @@ const Lecturers = () => {
                       return v.users?.email;
                     },
                   },
-                  { Header: "Name", accessor: "name" },
-                  { Header: "Position", accessor: "position" },
+                  { Header: "Nama", accessor: "name" },
+                  { Header: "Posisi", accessor: "position" },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as lecturers).id;

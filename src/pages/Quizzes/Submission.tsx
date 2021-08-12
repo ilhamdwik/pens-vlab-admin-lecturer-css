@@ -112,16 +112,16 @@ const Submission = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
-              <div className="text-xl font-bold flex-1">Submission</div>
+              <div className="text-xl font-bold flex-1">Hasil Pekerjaan</div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
             <div>
               <div className="flex mt-2">
                 <div className="flex-1 mr-4">
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                    Name
+                    Nama
                   </div>
                   <div className="text-lg ">{data?.students?.name}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
@@ -129,7 +129,7 @@ const Submission = () => {
                   </div>
                   <div className="text-lg ">{data?.students?.nrp}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                    Class
+                    Kelas
                   </div>
                   <div className="text-lg ">
                     {data?.students?.classes?.kelas}{" "}
@@ -139,11 +139,11 @@ const Submission = () => {
                 </div>
                 <div className="flex-1 mr-4">
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                    Quiz Title
+                    Nama Kuis
                   </div>
                   <div className="text-lg ">{data?.quizzes?.title}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                    Submitted
+                    Sudah Dikumpulkan
                   </div>
                   <div>
                     {data?.is_submitted ? (
@@ -153,11 +153,13 @@ const Submission = () => {
                     )}
                   </div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                    Submitted on
+                    Dikumpulkan pada
                   </div>
                   <div className="text-lg ">
                     {data?.time_submitted
-                      ? moment(data.time_submitted).format("HH:mm DD MMMM YYYY")
+                      ? moment(data.time_submitted).format(
+                          "HH:mm, DD MMMM YYYY"
+                        )
                       : "-"}
                   </div>
                 </div>
@@ -165,7 +167,7 @@ const Submission = () => {
               <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
               <div className="">
                 <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                  Quiz Description
+                  Deskripsi Kuis
                 </div>
                 <pre className="prose dark:prose-light max-w-none font-body">
                   {data?.quizzes?.question}
@@ -173,7 +175,7 @@ const Submission = () => {
               </div>
               <div className="mt-8">
                 <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                  Student's Output
+                  Output dari Mahasiswa
                 </div>
                 <article className="prose dark:prose-light max-w-none mt-2">
                   <pre>
@@ -183,7 +185,7 @@ const Submission = () => {
               </div>
               <div className="mt-8">
                 <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                  Code
+                  Kode
                 </div>
                 <div className="h-80 border dark:border-blueGray-600">
                   <Editor
@@ -198,7 +200,7 @@ const Submission = () => {
                   onClick={onCompile}
                   className="mt-2 mr-4 inline-flex items-center px-6 py-3 rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-blue-50 focus:outline-none ring-2"
                 >
-                  Run Code
+                  Jalankan Kode
                   <i className="fas fa-undo ml-4 mt-1" />
                 </button>
 
@@ -206,7 +208,7 @@ const Submission = () => {
                   {!compileLoading ? (
                     output ? (
                       <>
-                        <h4>Output</h4>
+                        <h4>Output Kode</h4>
                         <pre>
                           <code>
                             <Parse html={output} />
@@ -226,7 +228,7 @@ const Submission = () => {
                 </article>
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mt-8 mb-4">
-                <span>Score</span>
+                <span>Nilai</span>
                 <Input
                   type="number"
                   placeholder="Score"
@@ -247,7 +249,7 @@ const Submission = () => {
                 onClick={onUpdate}
                 className="w-full"
               >
-                <i className="fas fa-save mr-4" /> Save
+                <i className="fas fa-save mr-4" /> Simpan
               </Button>
             </div>
           </div>

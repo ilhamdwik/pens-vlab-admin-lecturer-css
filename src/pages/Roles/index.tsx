@@ -38,18 +38,18 @@ const Roles = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteRole.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               fetchData();
             },
             onFailure: (err) => {
@@ -67,10 +67,10 @@ const Roles = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Roles</div>
+              <div className="text-xl font-bold">Role</div>
               <Link to="/admin/data/roles/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> New Role
+                  <i className="fas fa-plus mr-4" /> Tambah Role
                 </Button>
               </Link>
             </div>
@@ -85,10 +85,10 @@ const Roles = () => {
                   fetchData(selected);
                 }}
                 columns={[
-                  { Header: "Role Name", accessor: "role_name" },
+                  { Header: "Nama Role", accessor: "role_name" },
 
                   {
-                    Header: "Actions",
+                    Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
                       const id = (row.original as roles).id;

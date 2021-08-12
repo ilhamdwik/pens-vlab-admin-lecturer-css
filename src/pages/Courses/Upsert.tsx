@@ -43,7 +43,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/admin/data/courses");
           },
           onSuccess: (res) => {
@@ -72,7 +72,7 @@ const Upsert = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/admin/data/courses");
         },
         onFailure: () => {
@@ -98,7 +98,7 @@ const Upsert = () => {
           data: formData,
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             history.replace("/admin/data/courses");
           },
           onFailure: () => {
@@ -120,10 +120,10 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold">
-                {id ? "Update" : "Create"} Course
+                {id ? "Edit" : "Tambah"} Course
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -139,7 +139,7 @@ const Upsert = () => {
               className="lg:w-1/3 flex flex-col"
             >
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Course Identifier (ID)</span>
+                <span>Identifier (ID) Course</span>
                 <Input
                   type="text"
                   placeholder="Course ID"
@@ -148,18 +148,18 @@ const Upsert = () => {
                 />
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Course Name</span>
+                <span>Nama Course</span>
                 <Input
                   type="text"
-                  placeholder="Course Name"
+                  placeholder="Nama Course"
                   value={courseName}
                   onChange={(e) => setCourseName(e.target.value)}
                 />
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Course Description</span>
+                <span>Deskripsi Course</span>
                 <TextArea
-                  placeholder="Course Description"
+                  placeholder="Deskripsi Course"
                   value={courseDescription}
                   onChange={(e) => setCourseDescription(e.target.value)}
                 />
@@ -168,26 +168,26 @@ const Upsert = () => {
                 className="block text-gray-700 dark:text-gray-200 mb-8"
                 {...getRootProps()}
               >
-                <label>Course Thumbnail</label>
+                <label>Thumbnail Course</label>
                 <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-blueGray-600 border-dashed rounded-md">
                   <div className="space-y-1 text-center">
                     <input {...getInputProps()} />
                     <div className="flex text-sm text-gray-600 dark:text-blueGray-200">
                       {isDragActive ? (
                         <label className="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                          <span>Drop the file here</span>
+                          <span>Drop file disini</span>
                         </label>
                       ) : (
                         <>
                           <label className="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                            <span>Upload a file</span>
+                            <span>Upload file</span>
                           </label>
-                          <p className="pl-1">or drag and drop</p>
+                          <p className="pl-1">atau drag and drop</p>
                         </>
                       )}
                     </div>
                     <p className="text-xs text-gray-500 dark:text-blueGray-400">
-                      PNG, JPG, GIF up to 10MB
+                      PNG, JPG, GIF maksimal 10MB
                     </p>
                   </div>
                 </div>
@@ -210,7 +210,7 @@ const Upsert = () => {
                 }
                 className=""
               >
-                <i className="fas fa-save mr-4" /> Save
+                <i className="fas fa-save mr-4" /> Simpan
               </Button>
             </form>
           </div>

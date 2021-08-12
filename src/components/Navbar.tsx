@@ -104,7 +104,7 @@ export const Navbar = ({
                             }}
                             className="p-4 pr-16 relative cursor-pointer hover:bg-blue-100 dark:hover:bg-blueGray-800 hover:text-blue-800 dark:hover:text-blue-400 transition ease-in-out duration-200 "
                           >
-                            Log Out
+                            Keluar
                           </div>
                         </div>
                       </>

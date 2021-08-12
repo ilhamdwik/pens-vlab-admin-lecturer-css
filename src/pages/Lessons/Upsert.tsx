@@ -55,7 +55,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
           },
           onSuccess: (res) => {
             if (res.modules) {
@@ -79,7 +79,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
           },
           onSuccess: (res) => {
             if (res.submodules) {
@@ -105,7 +105,7 @@ const Upsert = () => {
         onFailure: () => {
           nProgress.done();
           setLoading(false);
-          toast.error("Something went wrong");
+          toast.error("Terjadi Kesalahan");
           history.replace("/admin/data/modules");
         },
       })
@@ -118,7 +118,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/admin/data/lessons");
           },
           onSuccess: (res) => {
@@ -165,7 +165,7 @@ const Upsert = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/admin/data/lessons");
         },
         onFailure: () => {
@@ -199,7 +199,7 @@ const Upsert = () => {
           },
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             history.replace("/admin/data/lessons");
           },
           onFailure: () => {
@@ -242,10 +242,10 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold">
-                {id ? "Update" : "Create"} Lesson
+                {id ? "Edit" : "Tambah"} Lesson
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -270,7 +270,7 @@ const Upsert = () => {
                     />
                   </div>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Module</span>
+                    <span>Modul</span>
                     <DropDown
                       data={modulesInCourse.map((v) => ({
                         value: v.id ?? "",
@@ -280,11 +280,11 @@ const Upsert = () => {
                     />
                   </div>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Lessons In Module</span>
+                    <span>Lesson pada Modul</span>
                     <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                      <div className="w-12">Order</div>
-                      <div className="w-20">Is Exercise</div>
-                      <div className="flex-1">Title</div>
+                      <div className="w-12">Urutan</div>
+                      <div className="w-20">Latihan?</div>
+                      <div className="flex-1">Nama</div>
                     </div>
                     {lessonInModule.map((v) => (
                       <div className="flex space-x-4 p-2">
@@ -304,20 +304,20 @@ const Upsert = () => {
                 <div className="w-px bg-blueGray-200 dark:bg-blueGray-600" />
                 <div className="flex-1">
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Title</span>
+                    <span>Nama</span>
                     <Input
                       type="text"
-                      placeholder="Title"
+                      placeholder="Nama Lesson"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                     />
                   </div>
 
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Order</span>
+                    <span>Urutan</span>
                     <Input
                       type="number"
-                      placeholder="Module Order"
+                      placeholder="Urutan pada Modul"
                       value={order}
                       onChange={(e) => setOrder(parseInt(e.target.value))}
                     />
@@ -326,14 +326,14 @@ const Upsert = () => {
               </div>
 
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Content</span>
+                <span>Isi</span>
               </div>
               <div>
                 <MDEditor />
               </div>
 
               <div className="block text-gray-700 dark:text-gray-200 mt-10 mb-4">
-                <span>Is Exercise?</span>
+                <span>Latihan?</span>
                 <div>
                   <Switch
                     checked={isExercise}
@@ -342,7 +342,7 @@ const Upsert = () => {
                       isExercise ? "bg-blue-600" : "bg-blueGray-400"
                     } relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none my-4`}
                   >
-                    <span className="sr-only">Is Exercise</span>
+                    <span className="sr-only">Latihan?</span>
                     <span
                       className={`
                     transition ease-in-out duration-200 ${
@@ -356,7 +356,8 @@ const Upsert = () => {
                 <>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
                     <span className="mb-2">
-                      Expected Syntax (e.g. : for, foreach, function, etc)
+                      Syntax pada kode yang diharapkan (contoh : for, foreach,
+                      function, etc)
                     </span>
                     {expectedCode.map((v, i) => {
                       return (
@@ -399,9 +400,9 @@ const Upsert = () => {
                     </Button>
                   </div>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Expected Output</span>
+                    <span>Output yang Diharapkan</span>
                     <TextArea
-                      placeholder="Expected Output"
+                      placeholder="Output yang Diharapkan"
                       value={expectedOutput}
                       onChange={(e) => setExpectedOutput(e.target.value)}
                     />
@@ -419,7 +420,7 @@ const Upsert = () => {
                 }
                 className="mt-6"
               >
-                <i className="fas fa-save mr-4" /> Save
+                <i className="fas fa-save mr-4" /> Simpan
               </Button>
             </form>
           </div>

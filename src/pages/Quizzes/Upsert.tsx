@@ -105,7 +105,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/lecturer/data/quizzes");
           },
           onSuccess: (res) => {
@@ -134,7 +134,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/lecturer/data/quizzes");
           },
           onSuccess: (res) => {
@@ -169,7 +169,7 @@ const Upsert = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/lecturer/quizzes");
         },
         onFailure: () => {
@@ -182,18 +182,18 @@ const Upsert = () => {
 
   const onDelete = (id: string) => {
     Swal.fire({
-      title: "Delete Data?",
-      text: "Data will be deleted, are you sure?",
+      title: "Hapus Data?",
+      text: "Data akan dihapus, apakah anda yakin??",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Delete`,
+      confirmButtonText: `Hapus`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
         dispatch(
           deleteQuiz.request({
             id: id,
             onSuccess: () => {
-              toast.success("Data deleted!");
+              toast.success("Data berhasil dihapus!");
               history.replace("/lecturer/quizzes");
             },
             onFailure: (err) => {
@@ -225,7 +225,7 @@ const Upsert = () => {
           },
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             nProgress.done();
           },
           onFailure: () => {
@@ -247,10 +247,10 @@ const Upsert = () => {
                   history.replace("/lecturer/quizzes");
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold flex-1">
-                {id ? "Update" : "Create"} Quiz
+                {id ? "Edit" : "Tambah"} Quiz
               </div>
               {id ? (
                 <Button
@@ -277,10 +277,10 @@ const Upsert = () => {
             >
               <div className="flex-1">
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Quiz Title</span>
+                  <span>Nama Kuis</span>
                   <Input
                     type="text"
-                    placeholder="Quiz Title"
+                    placeholder="Nama Kuis"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -293,15 +293,15 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Quiz Description</span>
+                  <span>Deskripsi Kuis</span>
                   <TextArea
-                    placeholder="Question / Task"
+                    placeholder="Deskripsi Kuis"
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Due Time</span>
+                  <span>Batas Waktu Pengumpulan</span>
                   <div className="mt-2">
                     {serverTime ? (
                       <DatePicker
@@ -332,7 +332,7 @@ const Upsert = () => {
                   }
                   className="w-full"
                 >
-                  <i className="fas fa-save mr-4" /> Save
+                  <i className="fas fa-save mr-4" /> Simpan
                 </Button>
               </div>
               <div className="flex-1">
@@ -348,11 +348,11 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Assign to Students</span>
+                  <span>Mahasiswa yang Ditugaskan</span>
                   <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                    <div className="w-12">Selected</div>
+                    <div className="w-12">Dipilih</div>
                     <div className="w-20">NRP</div>
-                    <div className="flex-1">Name</div>
+                    <div className="flex-1">Nama</div>
                   </div>
                   {studentsData.map((v) => (
                     <div className="flex space-x-4 p-2">

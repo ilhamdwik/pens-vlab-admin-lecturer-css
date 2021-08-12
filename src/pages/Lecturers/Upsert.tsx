@@ -32,7 +32,7 @@ const Upsert = () => {
           onFailure: () => {
             nProgress.done();
             setLoading(false);
-            toast.error("Something went wrong");
+            toast.error("Terjadi Kesalahan");
             history.replace("/admin/data/lecturers");
           },
           onSuccess: (res) => {
@@ -61,7 +61,7 @@ const Upsert = () => {
         onSuccess: () => {
           nProgress.done();
           setLoading(false);
-          toast.success("Data created!");
+          toast.success("Data berhasil ditambahkan!");
           history.replace("/admin/data/lecturers");
         },
         onFailure: () => {
@@ -87,7 +87,7 @@ const Upsert = () => {
           },
           onSuccess: () => {
             setLoading(false);
-            toast.success("Data updated!");
+            toast.success("Data berhasil diubah!");
             history.replace("/admin/data/lecturers");
           },
           onFailure: () => {
@@ -109,10 +109,10 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Back
+                <i className="fas fa-arrow-left mr-4" /> Kembali
               </Button>
               <div className="text-xl font-bold">
-                {id ? "Update" : "Create"} Lecturer
+                {id ? "Edit" : "Tambah"} Dosen
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -149,19 +149,19 @@ const Upsert = () => {
               </div>
 
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Name</span>
+                <span>Nama</span>
                 <Input
                   type="text"
-                  placeholder="Lecturer Name"
+                  placeholder="Nama Dosen"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Position</span>
+                <span>Posisi</span>
                 <Input
                   type="text"
-                  placeholder="Position"
+                  placeholder="Posisi"
                   value={position}
                   onChange={(e) => setPosition(e.target.value)}
                 />
@@ -171,7 +171,7 @@ const Upsert = () => {
                 disabled={(id ? false : !email) || !name || !nip || loading}
                 className=""
               >
-                <i className="fas fa-save mr-4" /> Save
+                <i className="fas fa-save mr-4" /> Simpan
               </Button>
             </form>
           </div>

@@ -8,10 +8,10 @@ export const ProtectedRoute = ({
   ...rest
 }: RouteProps & { admin?: boolean }) => {
   const token = (
-    JSON.parse(localStorage.getItem("persist:auth") ?? "") as AuthState
+    JSON.parse(localStorage.getItem("persist:auth") || "{}") as AuthState
   )?.token;
-  const user = JSON.parse(localStorage.getItem("persist:auth") ?? "")?.user;
-  const isAdmin = JSON.parse(user ?? null)?.isAdmin;
+  const user = JSON.parse(localStorage.getItem("persist:auth") || "{}")?.user;
+  const isAdmin = JSON.parse(user || "{}")?.isAdmin;
 
   console.log(isAdmin);
   return (

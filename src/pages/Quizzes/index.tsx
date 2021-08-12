@@ -37,7 +37,7 @@ const Quiz = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Quiz</div>
-              <Link to="/admin/quizzes/create">
+              <Link to="/lecturer/quizzes/create">
                 <Button>
                   <i className="fas fa-plus mr-4" /> New Quiz
                 </Button>
@@ -51,7 +51,7 @@ const Quiz = () => {
 
                 const isDone = totalSubmitted === v.student_to_quiz?.length;
                 return (
-                  <Link to={`/admin/quizzes/update/${v.id}`}>
+                  <Link to={`/lecturer/quizzes/update/${v.id}`}>
                     <Card
                       className={`bg-blueGray-100 dark:bg-blueGray-900 shadow-none border-l-4 ${
                         isDone

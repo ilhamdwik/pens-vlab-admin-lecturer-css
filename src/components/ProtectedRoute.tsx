@@ -25,7 +25,7 @@ export const ProtectedRoute = ({
           return (
             <Redirect
               to={{
-                pathname: "/admin/load",
+                pathname: "/load",
               }}
             />
           );

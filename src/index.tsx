@@ -81,7 +81,7 @@ const Navigation = () => {
         ) : null}
 
         <Route path="/admin/login" exact component={Login} />
-        <Route path="/admin/load" exact component={Loader} />
+        <Route path="/load" exact component={Loader} />
 
         <ProtectedRoute
           path="/admin/"
@@ -204,7 +204,7 @@ const Navigation = () => {
           )}
         />
 
-        <Redirect to="/admin/load" />
+        <Redirect to="/load" />
       </Switch>
       <ToastContainer
         transition={Slide}

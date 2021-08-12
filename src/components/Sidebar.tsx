@@ -125,7 +125,7 @@ export const Sidebar = () => {
   return (
     <aside className="z-30 flex-shrink-0  w-64  bg-white dark:bg-blueGray-800 relative h-screen flex flex-col">
       <div className="flex px-6 items-center h-16">
-        <Link to="/vlab">
+        <Link to="/">
           {dark ? (
             <LogoTextWhite className="w-36 h-12" />
           ) : (

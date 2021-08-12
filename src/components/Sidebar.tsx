@@ -14,11 +14,18 @@ const routes: {
 }[] = [
   {
     path: "/vlab-admin/home", // the url
+    adminPage: true,
     icon: "home", // the component being exported from icons/index.js
     name: "Dashboard", // name that appear in Sidebar
   },
   {
-    path: "/vlab-admin/quizzes",
+    path: "/vlab-lecturer/home", // the url
+    adminPage: false,
+    icon: "home", // the component being exported from icons/index.js
+    name: "Dashboard", // name that appear in Sidebar
+  },
+  {
+    path: "/vlab-lecturer/quizzes",
     icon: "chalkboard-teacher",
     name: "Quiz",
     adminPage: false,

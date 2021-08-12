@@ -4,17 +4,21 @@ import { AuthState } from "../redux/reducers/authReducer";
 
 export const ProtectedRoute = ({
   component: Component,
+  admin,
   ...rest
-}: RouteProps) => {
+}: RouteProps & { admin?: boolean }) => {
   const token = (
     JSON.parse(localStorage.getItem("persist:auth") ?? "") as AuthState
-  ).token;
+  )?.token;
+  const user = JSON.parse(localStorage.getItem("persist:auth") ?? "")?.user;
+  const isAdmin = JSON.parse(user ?? null)?.isAdmin;
 
+  console.log(isAdmin);
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (token) {
+        if (token && (admin ? isAdmin : isAdmin ? false : true)) {
           //@ts-ignore
           return <Component {...rest} {...props} />;
         } else {

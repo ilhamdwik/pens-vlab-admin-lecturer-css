@@ -12,7 +12,7 @@ import { RootState } from "../redux/store";
 
 export const Loader = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state: RootState) => state.auth.token);
+  const { token, user } = useSelector((state: RootState) => state.auth);
   const history = useHistory();
   const controls = useAnimation();
   const [cookies] = useCookies(["user"]);
@@ -39,9 +39,13 @@ export const Loader = () => {
     controls.start(initialAnimation);
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      history.replace("/vlab-admin/home");
+      if (user?.isAdmin) {
+        history.replace("/vlab-admin/home");
+      } else {
+        history.replace("/vlab-lecturer/home");
+      }
     }
-  }, []);
+  }, [token]);
 
   // React.useEffect(() => {
   //   if (cookies.vlab_token) {
@@ -75,7 +79,7 @@ export const Loader = () => {
               axios.defaults.headers.common[
                 "Authorization"
               ] = `Bearer ${token}`;
-              history.replace("/vlab-admin/home");
+              history.replace("/vlab-lecturer/home");
             },
           })
         );

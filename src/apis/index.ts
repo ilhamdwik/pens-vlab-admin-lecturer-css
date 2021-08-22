@@ -3,6 +3,8 @@ export const baseUrl = `${process.env.REACT_APP_BACKEND_URL}`;
 export const postLoginApi = `${baseUrl}/api/v1/admin/login`;
 export const userCheckApi = `${baseUrl}/api/v1/user/check`;
 export const getServerTimeApi = `${baseUrl}/api/v1/get-time`;
+export const etholUserDetailApi =
+  "https://ethol.pens.ac.id/api/vlab/info-akun?key_vlab=etholv2-vlab";
 
 export const compileApi = `${baseUrl}/api/v1/compile`;
 
@@ -57,13 +59,6 @@ export const putUpdateSubmissionApi = `${baseUrl}/api/v1/admin/quizzes/submissio
 export const postCreateQuizApi = `${baseUrl}/api/v1/admin/quizzes/create`;
 export const putUpdateQuizApi = `${baseUrl}/api/v1/admin/quizzes/update/`;
 export const deleteQuizApi = `${baseUrl}/api/v1/admin/quizzes/delete/`;
-
-// roles
-export const getRolesApi = `${baseUrl}/api/v1/admin/roles`;
-export const getRoleDetailApi = `${baseUrl}/api/v1/admin/roles/`;
-export const postCreateRoleApi = `${baseUrl}/api/v1/admin/roles/create`;
-export const putUpdateRoleApi = `${baseUrl}/api/v1/admin/roles/update/`;
-export const deleteRoleApi = `${baseUrl}/api/v1/admin/roles/delete/`;
 
 // students
 export const getStudentsApi = `${baseUrl}/api/v1/admin/students`;

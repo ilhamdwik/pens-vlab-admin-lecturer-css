@@ -8,9 +8,7 @@ import * as lecturersActions from "./lecturersActions";
 import * as lessonsActions from "./lessonsActions";
 import * as modulesActions from "./modulesActions";
 import * as quizzesActions from "./quizzesActions";
-import * as rolesActions from "./rolesActions";
 import * as studentsActions from "./studentsActions";
-import * as usersActions from "./usersActions";
 
 export type AppAction = ActionType<typeof appActions>;
 export type AuthAction = ActionType<typeof authActions>;
@@ -22,9 +20,7 @@ export type LecturersAction = ActionType<typeof lecturersActions>;
 export type LessonsAction = ActionType<typeof lessonsActions>;
 export type ModulesAction = ActionType<typeof modulesActions>;
 export type QuizzesAction = ActionType<typeof quizzesActions>;
-export type RolesAction = ActionType<typeof rolesActions>;
 export type StudentsAction = ActionType<typeof studentsActions>;
-export type UsersAction = ActionType<typeof usersActions>;
 
 export type RootAction =
   | AppAction
@@ -37,6 +33,4 @@ export type RootAction =
   | LessonsAction
   | ModulesAction
   | QuizzesAction
-  | RolesAction
-  | StudentsAction
-  | UsersAction;
+  | StudentsAction;

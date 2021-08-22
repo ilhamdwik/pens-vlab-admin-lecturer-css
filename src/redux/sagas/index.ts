@@ -9,9 +9,7 @@ import lecturers from "./lecturers";
 import lessons from "./lessons";
 import modules from "./modules";
 import quizzes from "./quizzes";
-import roles from "./roles";
 import students from "./students";
-import users from "./users";
 
 export default function* root() {
   yield all([
@@ -25,8 +23,6 @@ export default function* root() {
     lessons(),
     modules(),
     quizzes(),
-    roles(),
     students(),
-    users(),
   ]);
 }

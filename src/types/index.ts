@@ -1,3 +1,11 @@
+export type EtholLecturer = {
+  id: number;
+  nip: string;
+  nama: string;
+  jurusan: string;
+  role: "dosen";
+};
+
 export type Courses = {
   name: string;
   id: string;
@@ -89,7 +97,6 @@ export type lecturers = {
   avatar_url: string | null;
   createdAt?: Date;
   updatedAt?: Date;
-  users?: users;
 };
 
 /**
@@ -143,17 +150,6 @@ export type quizzes = {
 };
 
 /**
- * Model roles
- */
-
-export type roles = {
-  id?: string;
-  role_name: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-};
-
-/**
  * Model student_to_quiz
  */
 
@@ -185,7 +181,6 @@ export type students = {
   avatar_url: string | null;
   createdAt?: Date;
   updatedAt?: Date;
-  users?: users;
   classes?: classes;
 };
 
@@ -231,28 +226,6 @@ export type user_progress = {
   submodule_id: string;
   is_done: boolean;
   last_answer: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-};
-
-/**
- * Model user_to_role
- */
-
-export type user_to_role = {
-  user_id: string;
-  role_id: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-};
-
-/**
- * Model users
- */
-
-export type users = {
-  id?: string;
-  email: string;
   createdAt?: Date;
   updatedAt?: Date;
 };

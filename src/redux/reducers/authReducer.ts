@@ -1,5 +1,4 @@
 import { createReducer } from "typesafe-actions";
-import { users } from "../../types";
 import { AuthAction } from "../actions/actionTypes";
 import { setToken, setUser } from "../actions/authActions";
 
@@ -29,7 +28,7 @@ const authReducer = createReducer<AuthState, AuthAction>(initialState)
       token: action.payload,
     })
   )
-  .handleAction(setUser, (state: AuthState, action: { payload: users }) => ({
+  .handleAction(setUser, (state: AuthState, action: { payload: User }) => ({
     ...state,
     user: action.payload,
   }));

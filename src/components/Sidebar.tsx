@@ -55,10 +55,6 @@ const routes: {
     adminPage: true,
     routes: [
       {
-        path: "/admin/data/roles",
-        name: "Role",
-      },
-      {
         path: "/admin/data/classes",
         name: "Kelas",
       },

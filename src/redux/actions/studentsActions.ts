@@ -45,7 +45,6 @@ export const postCreateStudent = createAsyncAction(
       class_id: string;
       name: string;
       nrp: string;
-      email: string;
     };
     onSuccess: (res: students) => void;
     onFailure: (err: Error) => void;

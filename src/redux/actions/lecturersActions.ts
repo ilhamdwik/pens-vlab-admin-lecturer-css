@@ -42,7 +42,6 @@ export const postCreateLecturer = createAsyncAction(
 )<
   {
     data: {
-      email: string;
       nip: string;
       name: string;
       position: string;
@@ -62,7 +61,6 @@ export const putUpdateLecturer = createAsyncAction(
   {
     id: string;
     data: {
-      email: string;
       nip: string;
       name: string;
       position: string;

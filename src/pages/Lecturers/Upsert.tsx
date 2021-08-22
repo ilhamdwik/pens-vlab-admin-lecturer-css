@@ -18,7 +18,6 @@ const Upsert = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loading, setLoading] = React.useState(id ? true : false);
-  const [email, setEmail] = React.useState("");
   const [name, setName] = React.useState("");
   const [nip, setNip] = React.useState("");
   const [position, setPosition] = React.useState("");
@@ -55,7 +54,6 @@ const Upsert = () => {
         data: {
           name,
           nip,
-          email,
           position,
         },
         onSuccess: () => {
@@ -82,7 +80,6 @@ const Upsert = () => {
           data: {
             name,
             nip,
-            email,
             position,
           },
           onSuccess: () => {
@@ -129,24 +126,15 @@ const Upsert = () => {
             >
               {id ? null : (
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Email</span>
+                  <span>NIP</span>
                   <Input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    placeholder="NIP"
+                    value={nip}
+                    onChange={(e) => setNip(e.target.value)}
                   />
                 </div>
               )}
-              <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>NIP</span>
-                <Input
-                  type="text"
-                  placeholder="NIP"
-                  value={nip}
-                  onChange={(e) => setNip(e.target.value)}
-                />
-              </div>
 
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
                 <span>Nama</span>
@@ -168,7 +156,7 @@ const Upsert = () => {
               </div>
 
               <Button
-                disabled={(id ? false : !email) || !name || !nip || loading}
+                disabled={(id ? false : !nip) || !name || loading}
                 className=""
               >
                 <i className="fas fa-save mr-4" /> Simpan

@@ -22,7 +22,6 @@ const Upsert = () => {
   const history = useHistory();
   const [loading, setLoading] = React.useState(id ? true : false);
   const [classesData, setClassesData] = React.useState<classes[]>([]);
-  const [email, setEmail] = React.useState("");
   const [name, setName] = React.useState("");
   const [classID, setClassID] = React.useState("");
   const [nrp, setNrp] = React.useState("");
@@ -76,7 +75,6 @@ const Upsert = () => {
           class_id: classID,
           name,
           nrp,
-          email,
         },
         onSuccess: () => {
           nProgress.done();
@@ -148,30 +146,22 @@ const Upsert = () => {
             >
               {id ? null : (
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Email</span>
+                  <span>NRP</span>
                   <Input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    placeholder="NRP"
+                    value={nrp}
+                    onChange={(e) => setNrp(e.target.value)}
                   />
                 </div>
               )}
-              <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>NRP</span>
-                <Input
-                  type="text"
-                  placeholder="NRP"
-                  value={nrp}
-                  onChange={(e) => setNrp(e.target.value)}
-                />
-              </div>
+
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
                 <span>Kelas</span>
                 <DropDown
                   data={classesData.map((v) => ({
                     value: v.id ?? "",
-                    name: `${v.kelas} ${v.program} ${v.jurusan}`,
+                    name: `${v.kelas} ${v.jurusan}`,
                   }))}
                   onChange={(v) => setClassID(v)}
                 />
@@ -187,7 +177,7 @@ const Upsert = () => {
               </div>
 
               <Button
-                disabled={(id ? false : !email) || !name || !nrp || loading}
+                disabled={(id ? false : !nrp) || !name || loading}
                 className=""
               >
                 <i className="fas fa-save mr-4" /> Simpan

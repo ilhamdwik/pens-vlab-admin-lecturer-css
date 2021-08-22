@@ -89,11 +89,11 @@ const Students = () => {
                 }}
                 columns={[
                   {
-                    Header: "Email",
-                    id: "email",
+                    Header: "NRP",
+                    id: "nrp",
                     Cell: ({ row }) => {
                       const v = row.original as students;
-                      return v.users?.email;
+                      return v.nrp;
                     },
                   },
                   { Header: "Nama", accessor: "name" },
@@ -102,7 +102,7 @@ const Students = () => {
                     id: "class",
                     Cell: ({ row }) => {
                       const v = row.original as students;
-                      return `${v.classes?.kelas} ${v.classes?.program} ${v.classes?.jurusan}`;
+                      return `${v.classes?.kelas} ${v.classes?.jurusan}`;
                     },
                   },
 

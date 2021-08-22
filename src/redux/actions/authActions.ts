@@ -1,10 +1,25 @@
 import { createAction, createAsyncAction } from "typesafe-actions";
+import { EtholLecturer } from "../../types";
 
 export const setUser = createAction("SET_USER", (user?: {}) => user)();
 export const setToken = createAction(
   "SET_TOKEN",
   (token: string | undefined) => token
 )();
+
+export const fetchEtholUserDetail = createAsyncAction(
+  "ETHOL_USER_REQUEST",
+  "ETHOL_USER_SUCCESS",
+  "ETHOL_USER_ERROR"
+)<
+  {
+    token: string;
+    onSuccess: (res: EtholLecturer) => void;
+    onFailure: (err: Error) => void;
+  },
+  string,
+  Error
+>();
 
 export const postLogin = createAsyncAction(
   "REQUEST_POST_LOGIN",
@@ -31,11 +46,7 @@ export const fetchUserCheck = createAsyncAction(
   {
     data: {
       token: string;
-      userCas: {
-        email: string;
-        nip?: string;
-        nrp?: string;
-      };
+      userDetail: EtholLecturer;
     };
     onSuccess: (res: string) => void;
     onFailure: (err: Error) => void;

@@ -5,7 +5,11 @@ import { motion, useAnimation } from "framer-motion";
 import { ControlsAnimationDefinition } from "framer-motion/types/animation/types";
 import { Modal } from "../components/Modal";
 import axios from "axios";
-import { fetchUserCheck, setToken } from "../redux/actions/authActions";
+import {
+  fetchEtholUserDetail,
+  fetchUserCheck,
+  setToken,
+} from "../redux/actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { RootState } from "../redux/store";
@@ -15,7 +19,7 @@ export const Loader = () => {
   const { token, user } = useSelector((state: RootState) => state.auth);
   const history = useHistory();
   const controls = useAnimation();
-  const [cookies] = useCookies(["user"]);
+  const [cookies] = useCookies(["token"]);
   const [showModal, setShowModal] = React.useState(false);
 
   const initialAnimation: ControlsAnimationDefinition = (i) => ({
@@ -60,26 +64,32 @@ export const Loader = () => {
 
   const checkAuth = () => {
     if (!token) {
-      if (cookies.user && localStorage.getItem("userCas")) {
+      if (cookies.token && localStorage.getItem("userCas")) {
         dispatch(
-          fetchUserCheck.request({
-            data: {
-              token: cookies.user.token,
-              userCas: JSON.parse(localStorage.getItem("userCas") ?? "") as {
-                email: string;
-                nip?: string;
-                nrp?: string;
-              },
-            },
+          fetchEtholUserDetail.request({
+            token: cookies.token,
             onFailure: () => {
               setShowModal(true);
             },
-            onSuccess: (token: string) => {
-              dispatch(setToken(token));
-              axios.defaults.headers.common[
-                "Authorization"
-              ] = `Bearer ${token}`;
-              history.replace("/lecturer/home");
+            onSuccess: (userDetail) => {
+              dispatch(
+                fetchUserCheck.request({
+                  data: {
+                    token: cookies.token,
+                    userDetail,
+                  },
+                  onFailure: () => {
+                    setShowModal(true);
+                  },
+                  onSuccess: (token: string) => {
+                    dispatch(setToken(token));
+                    axios.defaults.headers.common[
+                      "Authorization"
+                    ] = `Bearer ${token}`;
+                    history.replace("/home");
+                  },
+                })
+              );
             },
           })
         );

@@ -25,8 +25,6 @@ import DummyLogin from "./pages/DummyLogin";
 // pages
 import Classes from "./pages/Classes/index";
 import UpsertClass from "./pages/Classes/Upsert";
-import Roles from "./pages/Roles/index";
-import UpsertRoles from "./pages/Roles/Upsert";
 import Courses from "./pages/Courses/index";
 import UpsertCourses from "./pages/Courses/Upsert";
 import Modules from "./pages/Modules/index";
@@ -100,17 +98,6 @@ const Navigation = () => {
                   path="/admin/data/classes/update/:id"
                   exact
                   component={UpsertClass}
-                />
-                <Route path="/admin/data/roles" exact component={Roles} />
-                <Route
-                  path="/admin/data/roles/create"
-                  exact
-                  component={UpsertRoles}
-                />
-                <Route
-                  path="/admin/data/roles/update/:id"
-                  exact
-                  component={UpsertRoles}
                 />
                 <Route path="/admin/data/courses" exact component={Courses} />
                 <Route

@@ -89,11 +89,11 @@ const Lecturers = () => {
                 }}
                 columns={[
                   {
-                    Header: "Email",
-                    id: "email",
+                    Header: "NIP",
+                    id: "nip",
                     Cell: ({ row }) => {
                       const v = row.original as lecturers;
-                      return v.users?.email;
+                      return v.nip;
                     },
                   },
                   { Header: "Nama", accessor: "name" },

@@ -236,6 +236,9 @@ const Upsert = () => {
     }
   };
 
+  // console.log("kelas",classData)
+  // console.log("student",studentsData)
+
   return (
     <div className="p-6">
       <div className="grid grid-cols-1 gap-6">

@@ -16,7 +16,8 @@ import { RootState } from "../redux/store";
 
 export const Loader = () => {
   const dispatch = useDispatch();
-  const { token, user } = useSelector((state: RootState) => state.auth);
+  const token = useSelector((state: RootState) => state.auth.token);
+  const { user } = useSelector((state: RootState) => state.auth);
   const history = useHistory();
   const controls = useAnimation();
   const [cookies] = useCookies(["token"]);
@@ -49,7 +50,7 @@ export const Loader = () => {
         history.replace("/lecturer/home");
       }
     }
-  }, [token]);
+  }, []);
 
   // React.useEffect(() => {
   //   if (cookies.vlab_token) {
@@ -64,7 +65,8 @@ export const Loader = () => {
 
   const checkAuth = () => {
     if (!token) {
-      if (cookies.token && localStorage.getItem("userCas")) {
+      if (cookies.token) {
+      // if (cookies.token && localStorage.getItem("persist:auth")) {
         dispatch(
           fetchEtholUserDetail.request({
             token: cookies.token,
@@ -96,7 +98,7 @@ export const Loader = () => {
       } else {
         // if there is no "user" cookie from ETHOL
         setShowModal(true);
-        dispatch(setToken(undefined));
+        // dispatch(setToken(undefined));
         axios.defaults.headers.common["Authorization"] = undefined;
       }
     }

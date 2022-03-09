@@ -50,6 +50,7 @@
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3",
     "sanitize-html": "^2.4.0",
+    "serve": "^13.0.2",
     "sweetalert2": "^11.0.18",
     "typesafe-actions": "^5.1.0",
     "typescript": "^4.1.2",

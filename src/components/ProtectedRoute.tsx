@@ -13,7 +13,7 @@ export const ProtectedRoute = ({
   const user = JSON.parse(localStorage.getItem("persist:auth") || "{}")?.user;
   const isAdmin = JSON.parse(user || "{}")?.isAdmin;
 
-  console.log(isAdmin);
+  // console.log(isAdmin);
   return (
     <Route
       {...rest}

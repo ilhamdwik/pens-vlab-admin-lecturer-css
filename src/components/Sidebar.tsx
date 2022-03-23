@@ -24,12 +24,47 @@ const routes: {
     icon: "home", // the component being exported from icons/index.js
     name: "Beranda", // name that appear in Sidebar
   },
+
   {
-    path: "/lecturer/quizzes",
-    icon: "chalkboard-teacher",
-    name: "Kuis",
+    name: "Data Course",
     adminPage: false,
+    routes: [
+      // submenu
+      {
+        path: "/lecturer/data/courses",
+        name: "Course",
+        icon: "house-user",
+      },
+      {
+        path: "/lecturer/data/modules",
+        name: "Modul",
+        icon: "book",
+      },
+      {
+        path: "/lecturer/data/lessons",
+        name: "Lesson",
+        icon: "keyboard",
+      },
+    ],
   },
+  {
+    name: "Data Kuis",
+    adminPage: false,
+    routes: [
+      // submenu
+      {
+        path: "/lecturer/quizzes",
+        name: "Kuis",
+        icon: "comments",
+      },
+    ],
+  },
+  // {
+  //   path: "/lecturer/quizzes",
+  //   icon: "chalkboard-teacher",
+  //   name: "Kuis",
+  //   adminPage: false,
+  // },
 
   {
     name: "Data Course",
@@ -39,14 +74,17 @@ const routes: {
       {
         path: "/admin/data/courses",
         name: "Course",
+        icon: "folder-open",
       },
       {
         path: "/admin/data/modules",
         name: "Modul",
+        icon: "book",
       },
       {
         path: "/admin/data/lessons",
         name: "Lesson",
+        icon: "keyboard",
       },
     ],
   },
@@ -57,14 +95,17 @@ const routes: {
       {
         path: "/admin/data/classes",
         name: "Kelas",
+        icon: "house-user",
       },
       {
         path: "/admin/data/students",
         name: "Mahasiswa",
+        icon: "users",
       },
       {
         path: "/admin/data/lecturers",
         name: "Dosen",
+        icon: "chalkboard-teacher",
       },
     ],
   },

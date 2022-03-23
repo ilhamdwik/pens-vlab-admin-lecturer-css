@@ -128,7 +128,7 @@ const Lessons = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Lesson</div>
-              <Link to="/admin/data/lessons/create">
+              <Link to="/lecturer/data/lessons/create">
                 <Button>
                   <i className="fas fa-plus mr-4" /> Tambah Lesson
                 </Button>
@@ -196,7 +196,7 @@ const Lessons = () => {
                           <Button onClick={() => setViewDetailID(id ?? "")}>
                             <i className="fas fa-eye" />
                           </Button>
-                          <Link to={`/admin/data/lessons/update/${id}`}>
+                          <Link to={`/lecturer/data/lessons/update/${id}`}>
                             <Button>
                               <i className="fas fa-pencil-alt" />
                             </Button>

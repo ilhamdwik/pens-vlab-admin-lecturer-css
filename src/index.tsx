@@ -22,7 +22,7 @@ import Loader from "./pages/Loader";
 import Home from "./pages/Home";
 import DummyLogin from "./pages/DummyLogin";
 
-// pages
+// pages admin
 import Classes from "./pages/Classes/index";
 import UpsertClass from "./pages/Classes/Upsert";
 import Courses from "./pages/Courses/index";
@@ -35,10 +35,18 @@ import Students from "./pages/Students/index";
 import UpsertStudents from "./pages/Students/Upsert";
 import Lecturers from "./pages/Lecturers/index";
 import UpsertLecturers from "./pages/Lecturers/Upsert";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// pages lecturer
+import CoursesLecturer from "./pages/CoursesLecturer/index";
+import UpsertCourseLecturer from "./pages/CoursesLecturer/Upsert";
+import ModulesLecturer from "./pages/ModulesLecturer/index";
+import UpsertModulesLecturer from "./pages/ModulesLecturer/Upsert";
+import LessonsLecturer from "./pages/LessonsLecturer/index";
+import UpsertLessonsLecturer from "./pages/LessonsLecturer/Upsert";
 import Quizzes from "./pages/Quizzes/index";
 import Submission from "./pages/Quizzes/Submission";
 import UpsertQuizzes from "./pages/Quizzes/Upsert";
-import ProtectedRoute from "./components/ProtectedRoute";
 
 const contextClass = {
   success: "bg-blue-600",
@@ -169,6 +177,39 @@ const Navigation = () => {
             <Layout>
               <Switch>
                 <Route path="/lecturer/home" exact component={Home} />
+                <Route path="/lecturer/data/courses" exact component={CoursesLecturer} />
+                <Route
+                  path="/lecturer/data/courses/create"
+                  exact
+                  component={UpsertCourseLecturer}
+                />
+                <Route
+                  path="/lecturer/data/courses/update/:id"
+                  exact
+                  component={UpsertCourseLecturer}
+                />
+                <Route path="/lecturer/data/modules" exact component={ModulesLecturer} />
+                <Route
+                  path="/lecturer/data/modules/create"
+                  exact
+                  component={UpsertModulesLecturer}
+                />
+                <Route
+                  path="/lecturer/data/modules/update/:id"
+                  exact
+                  component={UpsertModulesLecturer}
+                />
+                <Route path="/lecturer/data/lessons" exact component={LessonsLecturer} />
+                <Route
+                  path="/lecturer/data/lessons/create"
+                  exact
+                  component={UpsertLessonsLecturer}
+                />
+                <Route
+                  path="/lecturer/data/lessons/update/:id"
+                  exact
+                  component={UpsertLessonsLecturer}
+                />
                 <Route path="/lecturer/quizzes" exact component={Quizzes} />
                 <Route
                   path="/lecturer/quizzes/submission/:id"

@@ -120,7 +120,7 @@ export const Navbar = ({
               className="focus:outline-none"
             >
               {dark ? (
-                <i className="fas fa-sun text-lg text-yellow-200" />
+                <i className="fas fa-sun text-lg text-white" />
               ) : (
                 <i className="fas fa-moon text-lg text-lightBlue-800" />
               )}

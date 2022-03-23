@@ -106,7 +106,7 @@ const Upsert = () => {
           nProgress.done();
           setLoading(false);
           toast.error("Terjadi Kesalahan");
-          history.replace("/admin/data/modules");
+          history.replace("/lecturer/data/modules");
         },
       })
     );
@@ -119,7 +119,7 @@ const Upsert = () => {
             nProgress.done();
             setLoading(false);
             toast.error("Terjadi Kesalahan");
-            history.replace("/admin/data/lessons");
+            history.replace("/lecturer/data/lessons");
           },
           onSuccess: (res) => {
             nProgress.done();
@@ -166,7 +166,7 @@ const Upsert = () => {
           nProgress.done();
           setLoading(false);
           toast.success("Data berhasil ditambahkan!");
-          history.replace("/admin/data/lessons");
+          history.replace("/lecturer/data/lessons");
         },
         onFailure: () => {
           nProgress.done();
@@ -200,7 +200,7 @@ const Upsert = () => {
           onSuccess: () => {
             setLoading(false);
             toast.success("Data berhasil diubah!");
-            history.replace("/admin/data/lessons");
+            history.replace("/lecturer/data/lessons");
           },
           onFailure: () => {
             setLoading(false);

@@ -65,7 +65,7 @@ export const Loader = () => {
 
   const checkAuth = () => {
     if (!token) {
-      if (cookies.token) {
+      if (cookies.token && localStorage.getItem("persist:auth")) {
       // if (cookies.token && localStorage.getItem("persist:auth")) {
         dispatch(
           fetchEtholUserDetail.request({

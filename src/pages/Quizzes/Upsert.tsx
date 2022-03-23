@@ -152,6 +152,37 @@ const Upsert = () => {
     }
   }, [classID]);
 
+  // React.useEffect(() => {
+  //   if (id) {
+  //     nProgress.start();
+  //     if(classID) {
+  //       dispatch(
+  //         getStudentsInClass.request({
+  //           id: classID,
+  //           onFailure: () => {
+  //             nProgress.done();
+  //             setLoading(false);
+  //             toast.error("Terjadi Kesalahan");
+  //             history.replace("/lecturer/data/quizzes");
+  //           },
+  //           onSuccess: (res) => {
+  //             nProgress.done();
+  //             setLoading(false);
+  //             if (res.students) {
+  //               setStudentsData(res.students);
+  //               if (!id) {
+  //                 setSelectedStudents(res.students);
+  //               }
+  //             }
+  //             // toast.success("success");
+  //           },
+  //         })
+  //       );
+  //     }
+  //   }
+  // }, [classID]);
+  console.log(classID)
+
   const onCreate = () => {
     nProgress.start();
     setLoading(true);
@@ -236,8 +267,9 @@ const Upsert = () => {
     }
   };
 
-  // console.log("kelas",classData)
-  // console.log("student",studentsData)
+  // console.log("classid",classID)
+  // console.log("kelas",classData.length)
+  // console.log("student",studentsData.length)
 
   return (
     <div className="p-6">

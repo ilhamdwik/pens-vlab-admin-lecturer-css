@@ -16,12 +16,19 @@ export const postCreateClassApi = `${baseUrl}/api/v1/admin/classes/create`;
 export const putUpdateClassApi = `${baseUrl}/api/v1/admin/classes/update/`;
 export const deleteClassApi = `${baseUrl}/api/v1/admin/classes/delete/`;
 
-// classes
+// courses admin
 export const getCoursesApi = `${baseUrl}/api/v1/admin/courses`;
 export const getCourseDetailApi = `${baseUrl}/api/v1/admin/courses/`;
 export const postCreateCourseApi = `${baseUrl}/api/v1/admin/courses/create`;
 export const putUpdateCourseApi = `${baseUrl}/api/v1/admin/courses/update/`;
 export const deleteCourseApi = `${baseUrl}/api/v1/admin/courses/delete/`;
+
+// courses lecturer
+// export const getCoursesApiLecturer = `${baseUrl}/api/v1/lecturer/courses`;
+// export const getCourseDetailApiLecturer = `${baseUrl}/api/v1/lecturer/courses/`;
+// export const postCreateCourseApiLecturer = `${baseUrl}/api/v1/lecturer/courses/create`;
+// export const putUpdateCourseApiLecturer = `${baseUrl}/api/v1/lecturer/courses/update/`;
+// export const deleteCourseApiLecturer = `${baseUrl}/api/v1/lecturer/courses/delete/`;
 
 // exercises
 export const getExercisesApi = `${baseUrl}/api/v1/admin/exercises`;

@@ -13,10 +13,10 @@ import {
 import TextArea from "../../components/TextArea";
 import { RootState } from "../../redux/store";
 import { student_to_quiz } from "../../types";
-import HashLoader from "react-spinners/ClipLoader";
+// import HashLoader from "react-spinners/ClipLoader";
 import Editor from "@monaco-editor/react";
-import Parse from "../../components/HTMLParser";
-import { fetchCompile } from "../../redux/actions/compileActions";
+// import Parse from "../../components/HTMLParser";
+// import { fetchCompile } from "../../redux/actions/compileActions";
 import Input from "../../components/Input";
 
 const Submission = () => {
@@ -29,10 +29,17 @@ const Submission = () => {
   const [data, setData] = React.useState<student_to_quiz>();
   const [code, setCode] = React.useState("");
   const [output, setOutput] = React.useState("");
-  const [compileLoading, setCompileLoading] = React.useState(false);
+  // const [compileLoading, setCompileLoading] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [score, setScore] = React.useState("");
   const [feedback, setFeedback] = React.useState("");
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOutput(`${code}`)
+    }, 1000)
+    return () => clearTimeout(timeout)
+  }, [code])
 
   React.useEffect(() => {
     if (id) {
@@ -57,25 +64,25 @@ const Submission = () => {
     }
   }, []);
 
-  const onCompile = () => {
-    setCompileLoading(true);
-    if (data) {
-      dispatch(
-        fetchCompile.request({
-          code,
-          progLanguage: data?.quizzes?.prog_languages_id ?? "",
-          onSuccess: (res) => {
-            setCompileLoading(false);
-            setOutput(res);
-          },
-          onFailure: (err) => {
-            setCompileLoading(false);
-            setOutput(err.message);
-          },
-        })
-      );
-    }
-  };
+  // const onCompile = () => {
+  //   setCompileLoading(true);
+  //   if (data) {
+  //     dispatch(
+  //       fetchCompile.request({
+  //         code,
+  //         progLanguage: data?.quizzes?.prog_languages_id ?? "",
+  //         onSuccess: (res) => {
+  //           setCompileLoading(false);
+  //           setOutput(res);
+  //         },
+  //         onFailure: (err) => {
+  //           setCompileLoading(false);
+  //           setOutput(err.message);
+  //         },
+  //       })
+  //     );
+  //   }
+  // };
 
   const onUpdate = () => {
     setLoading(true);
@@ -189,42 +196,38 @@ const Submission = () => {
                 </div>
                 <div className="h-80 border dark:border-blueGray-600">
                   <Editor
-                    defaultLanguage="php"
+                    defaultLanguage="html"
                     defaultValue={code}
                     value={code}
                     onChange={(value) => setCode(value ?? "asd")}
                     theme={dark ? "vs-dark" : "light"}
                   />
                 </div>
-                <button
+                {/* <button
                   onClick={onCompile}
                   className="mt-2 mr-4 inline-flex items-center px-6 py-3 rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-blue-50 focus:outline-none ring-2"
                 >
                   Jalankan Kode
                   <i className="fas fa-undo ml-4 mt-1" />
-                </button>
+                </button> */}
 
                 <article className="prose dark:prose-light max-w-none mt-8">
-                  {!compileLoading ? (
-                    output ? (
+                  {output ? (
                       <>
                         <h4>Output Kode</h4>
-                        <pre>
+                        <iframe 
+                          title="output"
+                          className="p-4 bg-gray-200 dark:bg-white max-w-none overflow-y-scroll scrollbar scrollbar-thin rounded-md" style={{ width: "100%", height: "auto", borderColor: "rgb(0 0 0)" }}
+                          srcDoc={output}
+                        >
+                        </iframe>
+                        {/* <pre>
                           <code>
                             <Parse html={output} />
                           </code>{" "}
-                        </pre>
+                        </pre> */}
                       </>
-                    ) : null
-                  ) : (
-                    <div className="h-40 flex justify-center items-center bg-">
-                      {dark ? (
-                        <HashLoader color="rgb(255, 255, 255)" size={40} />
-                      ) : (
-                        <HashLoader color="rgb(30, 64, 175)" size={40} />
-                      )}
-                    </div>
-                  )}
+                    ) : null}
                 </article>
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mt-8 mb-4">

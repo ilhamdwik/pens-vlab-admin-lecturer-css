@@ -98,7 +98,7 @@ export const Loader = () => {
       } else {
         // if there is no "user" cookie from ETHOL
         setShowModal(true);
-        // dispatch(setToken(undefined));
+        dispatch(setToken(undefined));
         axios.defaults.headers.common["Authorization"] = undefined;
       }
     }

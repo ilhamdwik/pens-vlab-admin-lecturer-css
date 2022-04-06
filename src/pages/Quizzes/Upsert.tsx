@@ -181,7 +181,6 @@ const Upsert = () => {
   //     }
   //   }
   // }, [classID]);
-  console.log(classID)
 
   const onCreate = () => {
     nProgress.start();
@@ -266,10 +265,6 @@ const Upsert = () => {
       );
     }
   };
-
-  // console.log("classid",classID)
-  // console.log("kelas",classData.length)
-  // console.log("student",studentsData.length)
 
   return (
     <div className="p-6">
@@ -435,7 +430,7 @@ const Upsert = () => {
           <div className="text-xl font-bold mt-12 mb-4 dark:text-white">
             Submissions
           </div>
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-6 my-6">
             {studentQuiz.map((v) => {
               return (
                 <Link

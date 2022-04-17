@@ -35,10 +35,10 @@ function* getStudentDetailSaga({
   payload,
 }: ReturnType<typeof getStudentDetail.request>) {
   try {
-    const response: AxiosResponse<students> = yield axios.get(
+    const response: AxiosResponse<{ data: students, studentProgress: number }> = yield axios.get(
       getStudentDetailApi + payload.id
     );
-    payload.onSuccess(response.data);
+    payload.onSuccess(response.data.data, response.data.studentProgress);
   } catch (err: any) {
     console.error(err.response);
     payload.onFailure(err.data);

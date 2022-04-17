@@ -28,7 +28,7 @@ export const getStudentDetail = createAsyncAction(
 )<
   {
     id: string;
-    onSuccess: (res: students) => void;
+    onSuccess: (res: students, studentProgress: number) => void;
     onFailure: (err: Error) => void;
   },
   string,

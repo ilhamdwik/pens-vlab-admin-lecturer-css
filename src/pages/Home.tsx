@@ -2,9 +2,34 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Card } from "../components/Card";
 import { RootState } from "../redux/store";
+// import nProgress from "nprogress";
+// import { getStudents } from "../redux/actions/studentsActions";
+// import { students } from "../types";
+// import { useDispatch } from "react-redux";
 
 const Home = () => {
   const user = useSelector((state: RootState) => state.auth.user);
+  // const [data, setData] = React.useState<students[]>([]);
+  // const dispatch = useDispatch();
+
+  // React.useEffect = () => {
+  //   nProgress.start();
+  //   dispatch(
+  //     getStudents.request({
+  //       onSuccess: (res) => {
+  //         setData(res);
+  //         nProgress.done();
+  //       },
+  //       onFailure: () => {
+  //         nProgress.done();
+  //       },
+  //     })
+  //   );
+  // };
+  
+  // React.useEffect(fetchData, []);
+  
+  // console.log(data)
   return (
     <div className="p-6">
       <div className="grid grid-cols-1 gap-6">

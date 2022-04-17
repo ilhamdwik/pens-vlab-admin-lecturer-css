@@ -13,11 +13,9 @@ import {
 import TextArea from "../../components/TextArea";
 import { RootState } from "../../redux/store";
 import { student_to_quiz } from "../../types";
-// import HashLoader from "react-spinners/ClipLoader";
 import Editor from "@monaco-editor/react";
-// import Parse from "../../components/HTMLParser";
-// import { fetchCompile } from "../../redux/actions/compileActions";
 import Input from "../../components/Input";
+import { toast } from "react-toastify";
 
 const Submission = () => {
   const { id } = useParams<{ id?: string }>();
@@ -29,7 +27,6 @@ const Submission = () => {
   const [data, setData] = React.useState<student_to_quiz>();
   const [code, setCode] = React.useState("");
   const [output, setOutput] = React.useState("");
-  // const [compileLoading, setCompileLoading] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [score, setScore] = React.useState("");
   const [feedback, setFeedback] = React.useState("");
@@ -64,30 +61,9 @@ const Submission = () => {
     }
   }, []);
 
-  // const onCompile = () => {
-  //   setCompileLoading(true);
-  //   if (data) {
-  //     dispatch(
-  //       fetchCompile.request({
-  //         code,
-  //         progLanguage: data?.quizzes?.prog_languages_id ?? "",
-  //         onSuccess: (res) => {
-  //           setCompileLoading(false);
-  //           setOutput(res);
-  //         },
-  //         onFailure: (err) => {
-  //           setCompileLoading(false);
-  //           setOutput(err.message);
-  //         },
-  //       })
-  //     );
-  //   }
-  // };
-
   const onUpdate = () => {
     setLoading(true);
     nProgress.start();
-
     dispatch(
       putUpdateSubmission.request({
         data: {
@@ -96,6 +72,7 @@ const Submission = () => {
         },
         onFailure: () => {
           nProgress.done();
+          handleScore(parseInt(score));
           setLoading(false);
         },
         onSuccess: () => {
@@ -106,6 +83,11 @@ const Submission = () => {
         studentId,
       })
     );
+  };
+
+  const handleScore = (score: number) => {
+    if ((score > 100) || (score < 0))
+      return toast.error("Score Invalid");
   };
 
   return (
@@ -130,15 +112,15 @@ const Submission = () => {
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
                     Nama
                   </div>
-                  <div className="text-lg ">{data?.students?.name}</div>
+                  <div className="text-base">{data?.students?.name}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
                     NRP
                   </div>
-                  <div className="text-lg ">{data?.students?.nrp}</div>
+                  <div className="text-base">{data?.students?.nrp}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
                     Kelas
                   </div>
-                  <div className="text-lg ">
+                  <div className="text-base">
                     {data?.students?.classes?.kelas}{" "}
                     {data?.students?.classes?.program}{" "}
                     {data?.students?.classes?.jurusan}
@@ -148,7 +130,7 @@ const Submission = () => {
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
                     Nama Kuis
                   </div>
-                  <div className="text-lg ">{data?.quizzes?.title}</div>
+                  <div className="text-base">{data?.quizzes?.title}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
                     Sudah Dikumpulkan
                   </div>
@@ -162,7 +144,7 @@ const Submission = () => {
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
                     Dikumpulkan pada
                   </div>
-                  <div className="text-lg ">
+                  <div className="text-base">
                     {data?.time_submitted
                       ? moment(data.time_submitted).format(
                           "HH:mm, DD MMMM YYYY"
@@ -203,14 +185,6 @@ const Submission = () => {
                     theme={dark ? "vs-dark" : "light"}
                   />
                 </div>
-                {/* <button
-                  onClick={onCompile}
-                  className="mt-2 mr-4 inline-flex items-center px-6 py-3 rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-blue-50 focus:outline-none ring-2"
-                >
-                  Jalankan Kode
-                  <i className="fas fa-undo ml-4 mt-1" />
-                </button> */}
-
                 <article className="prose dark:prose-light max-w-none mt-8">
                   {output ? (
                       <>
@@ -221,11 +195,6 @@ const Submission = () => {
                           srcDoc={output}
                         >
                         </iframe>
-                        {/* <pre>
-                          <code>
-                            <Parse html={output} />
-                          </code>{" "}
-                        </pre> */}
                       </>
                     ) : null}
                 </article>

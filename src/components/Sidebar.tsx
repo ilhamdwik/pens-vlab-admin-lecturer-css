@@ -59,6 +59,18 @@ const routes: {
       },
     ],
   },
+  {
+    name: "Data Progress Student",
+    adminPage: false,
+    routes: [
+      // submenu
+      {
+        path: "/lecturer/data/students",
+        name: "Student Progress",
+        icon: "spinner",
+      },
+    ],
+  },
   // {
   //   path: "/lecturer/quizzes",
   //   icon: "chalkboard-teacher",

@@ -94,7 +94,22 @@ export type lecturers = {
   name: string;
   position: string;
   nip: string;
+  class_id: string;
+  student_to_lecturer?: student_to_lecturer[];
   avatar_url: string | null;
+  createdAt?: Date;
+  updatedAt?: Date;
+};
+
+/**
+ * Model lecturers
+ */
+
+ export type student_to_lecturer = {
+  assigned_id: string;
+  student_id: string;
+  lecturers?: lecturers;
+  students?: students;
   createdAt?: Date;
   updatedAt?: Date;
 };

@@ -5,35 +5,36 @@ import { useDispatch } from "react-redux";
 import Button from "../../components/Button";
 import { Card } from "../../components/Card";
 import Table from "../../components/Table";
-import {
-  getStudentDetail,
-  getStudents,
-} from "../../redux/actions/studentsActions";
-import { students } from "../../types";
 import Modal from "../../components/Modal";
 import HashLoader from "react-spinners/ClipLoader";
-import { toast } from "react-toastify";
 import { formatName } from "../../utils/formatter";
 import {
   CircularProgressbar,
   buildStyles,
 } from 'react-circular-progressbar';
+import {
+  getStudentDetailLecturer,
+  getStudentsLecturer,
+} from "../../redux/actions/studentsActions";
+import { student_to_lecturer } from "../../types";
+import { toast } from "react-toastify";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from "react-router-dom";
 
 const StudentsLecturer = () => {
-  const [data, setData] = React.useState<students[]>([]);
+  const [data, setData] = React.useState<student_to_lecturer[]>([]);
   const dispatch = useDispatch();
   const [dataCount, setDataCount] = React.useState<number>();
   const [page, setPage] = React.useState<number>(1);
   const [viewDetailID, setViewDetailID] = React.useState("");
-  const [detail, setDetail] = React.useState<students | undefined>();
+  const [detail, setDetail] = React.useState<student_to_lecturer | undefined>();
   const [studentProgress, setStudentProgress] = React.useState<number>();
   const progress = studentProgress as number;
 
   const fetchData = (page?: number) => {
     nProgress.start();
     dispatch(
-      getStudents.request({
+      getStudentsLecturer.request({
         page: page ?? 1,
         onSuccess: (res, count) => {
           setData(res);
@@ -50,7 +51,7 @@ const StudentsLecturer = () => {
   React.useEffect(() => {
     if (viewDetailID) {
       dispatch(
-        getStudentDetail.request({
+        getStudentDetailLecturer.request({
           id: viewDetailID,
           onSuccess: (res, studentProgress) => {
             setDetail(res);
@@ -81,21 +82,21 @@ const StudentsLecturer = () => {
                 <div className="text-base font-bold text-lightBlue-600">
                   Nama
                 </div>
-                {formatName(detail.name ?? "")}
+                {formatName(detail.students?.name ?? "")}
                 <div className="text-base font-bold text-lightBlue-600 mt-4">
                   NRP
                 </div>
-                {detail.nrp}
+                {detail.students?.nrp}
               </div>
               <div className="flex-1">
                 <div className="text-base font-bold text-lightBlue-600">
                   Kelas
                 </div>
-                {detail.classes?.kelas}
+                {detail.students?.classes?.kelas}
                 <div className="text-base font-bold text-lightBlue-600 mt-4">
                   Program
                 </div>
-                {detail.classes?.program}
+                {detail.students?.classes?.program}
               </div>
               </>
             ) : (
@@ -113,7 +114,7 @@ const StudentsLecturer = () => {
               <div className="h-36 text-xs flex">
               <CircularProgressbar
                 value={progress}
-                text={`${studentProgress}%`}
+                text={`${studentProgress?.toFixed(0)}%`}
                 styles={buildStyles({
                   textColor: "text-lightBlue-600",
                   // pathColor: "text-lightBlue-600",
@@ -136,9 +137,22 @@ const StudentsLecturer = () => {
           <div>
             <div className="flex justify-between items-center">
               <div className="text-xl font-bold">Progress Mahasiswa</div>
-            </div>
-            <div className="mt-8">
-              <Table
+                {data.length ? (
+                  <Link to="/lecturer/data/students/update">
+                    <Button>
+                      <i className="fas fa-plus mr-4" /> Edit Mahasiswa
+                    </Button>
+                  </Link>
+                ) : (
+                  <Link to="/lecturer/data/students/create">
+                    <Button>
+                      <i className="fas fa-plus mr-4" /> Tambah Mahasiswa
+                    </Button>
+                  </Link>
+                )}
+              </div>
+              <div className="mt-8">
+                <Table
                 pagination
                 paginationCount={dataCount}
                 currentPage={page}
@@ -152,17 +166,25 @@ const StudentsLecturer = () => {
                     Header: "NRP",
                     id: "nrp",
                     Cell: ({ row }) => {
-                      const v = row.original as students;
-                      return v.nrp;
+                      const v = row.original as student_to_lecturer;
+                      return v.students?.nrp;
                     },
                   },
-                  { Header: "Nama", accessor: "name" },
+                  {
+                    Header: "Nama",
+                    id: "name",
+                    Cell: ({ row }) => {
+                      const v = row.original as student_to_lecturer;
+                      return v.students?.name;
+                    },
+                  },
+                  // { Header: "Nama", accessor: "name" },
                   {
                     Header: "Kelas",
                     id: "class",
                     Cell: ({ row }) => {
-                      const v = row.original as students;
-                      return `${v.classes?.kelas} ${v.classes?.jurusan}`;
+                      const v = row.original as student_to_lecturer;
+                      return `${v.students?.classes?.kelas} ${v.students?.classes?.program}`;
                     },
                   },
 
@@ -170,7 +192,7 @@ const StudentsLecturer = () => {
                     Header: "Action",
                     id: "expander", // It needs an ID
                     Cell: ({ row }) => {
-                      const id = (row.original as students).id;
+                      const id = (row.original as student_to_lecturer).students?.id;
                       return (
                         // Use Cell to render an expander for each row.
                         // We can use the getToggleRowExpandedProps prop-getter

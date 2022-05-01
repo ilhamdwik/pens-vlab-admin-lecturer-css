@@ -50,7 +50,7 @@ const Quiz = () => {
                 </Button>
               </Link>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-6">
+            <div className="mt-8 grid grid-cols-2 gap-6">
             {/* <div className="mt-8 grid grid-cols-2 gap-6"> */}
               {data.map((v) => {
                 const totalSubmitted = v.student_to_quiz?.filter(
@@ -116,30 +116,31 @@ const Quiz = () => {
                             <div>
                               {totalSubmitted} dari {v.student_to_quiz?.length}
                             </div>
-                            <div className="flex flex-1 flex-col justify-center mt-4 mb-8 text-green-400">
-                              <div className="h-32 text-xs flex">
-                                <AnimatedProgressProvider
-                                  valueStart={0}
-                                  valueEnd={precentase}
-                                  duration={5}
-                                  easingFunction={easeQuadInOut}
-                                  // repeat
-                                >
-                                  {(precentase: number) => {
-                                    const roundedValue = Math.round(precentase);
-                                    return (
-                                      <CircularProgressbar
-                                        value={precentase}
-                                        text={`${roundedValue}%`}
-                                        /* This is important to include, because if you're fully managing the
-                                  animation yourself, you'll want to disable the CSS animation. */
-                                        styles={buildStyles({ pathTransition: "none" })}
-                                      />
-                                    );
-                                  }}
-                                </AnimatedProgressProvider>
-                              </div>
-                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex flex-1 flex-col mt-4 mb-2">
+                          <div className="h-32 text-xs flex rounded-2xl bg-blueGray-100 dark:bg-blueGray-50">
+                            <AnimatedProgressProvider
+                              valueStart={0}
+                              valueEnd={precentase.toFixed(0)}
+                              duration={3}
+                              easingFunction={easeQuadInOut}
+                              // repeat
+                            >
+                              {(precentase: number) => {
+                                const roundedValue = Math.round(precentase);
+                                return (
+                                  <CircularProgressbar
+                                    value={precentase}
+                                    text={`${roundedValue.toFixed(0)}%`}
+                                    /* This is important to include, because if you're fully managing the
+                              animation yourself, you'll want to disable the CSS animation. */
+                                    styles={buildStyles({ pathTransition: "none" })}
+                                  />
+                                );
+                              }}
+                            </AnimatedProgressProvider>
                           </div>
                         </div>
                       </div>

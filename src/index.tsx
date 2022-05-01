@@ -48,6 +48,7 @@ import Quizzes from "./pages/Quizzes/index";
 import Submission from "./pages/Quizzes/Submission";
 import UpsertQuizzes from "./pages/Quizzes/Upsert";
 import StudentsLecturer from "./pages/StudentsLecturer/index";
+import UpsertStudentsLecturer from "./pages/StudentsLecturer/Upsert";
 
 const contextClass = {
   success: "bg-blue-600",
@@ -231,6 +232,16 @@ const Navigation = () => {
                   path="/lecturer/data/students" 
                   exact 
                   component={StudentsLecturer} 
+                />
+                <Route
+                  path="/lecturer/data/students/create"
+                  exact
+                  component={UpsertStudentsLecturer}
+                />
+                <Route
+                  path="/lecturer/data/students/update"
+                  exact
+                  component={UpsertStudentsLecturer}
                 />
                 <Redirect to="/lecturer/home" />
               </Switch>

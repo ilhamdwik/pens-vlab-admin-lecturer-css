@@ -128,7 +128,7 @@ const UpsertClass = () => {
                 <span>Kelas</span>
                 <Input
                   type="text"
-                  placeholder="Kelas"
+                  placeholder="Kelas (Example: 4 ITA D4)"
                   value={kelas}
                   onChange={(e) => setKelas(e.target.value)}
                 />
@@ -137,7 +137,7 @@ const UpsertClass = () => {
                 <span>Program</span>
                 <Input
                   type="text"
-                  placeholder="Program"
+                  placeholder="Program Studi (D3 or D4)"
                   value={program}
                   onChange={(e) => setProgram(e.target.value)}
                 />
@@ -146,7 +146,7 @@ const UpsertClass = () => {
                 <span>Jurusan</span>
                 <Input
                   type="text"
-                  placeholder="Jurusan"
+                  placeholder="Jurusan (Example: Teknik Informatika)"
                   value={jurusan}
                   onChange={(e) => setJurusan(e.target.value)}
                 />

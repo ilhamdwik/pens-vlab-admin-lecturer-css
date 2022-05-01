@@ -1,5 +1,9 @@
 import { createAsyncAction } from "typesafe-actions";
-import { students } from "../../types";
+import { 
+  lecturers, 
+  students, 
+  student_to_lecturer 
+} from "../../types";
 
 /**
  * Shallow merge new state with current app reducer state and initial state
@@ -21,6 +25,21 @@ export const getStudents = createAsyncAction(
   Error
 >();
 
+export const getStudentsLecturer = createAsyncAction(
+  "REQUEST_GET_STUDENT_LECTURER",
+  "SUCCESS_GET_STUDENT_LECTURER",
+  "ERROR_GET_STUDENT_LECTURER"
+)<
+  {
+    // assigned_id: string;
+    page?: number;
+    onSuccess: (res: student_to_lecturer[], count: number) => void;
+    onFailure: (err: Error) => void;
+  },
+  string,
+  Error
+>();
+
 export const getStudentDetail = createAsyncAction(
   "REQUEST_GET_STUDENT_DETAIL",
   "SUCCESS_GET_STUDENT_DETAIL",
@@ -28,7 +47,21 @@ export const getStudentDetail = createAsyncAction(
 )<
   {
     id: string;
-    onSuccess: (res: students, studentProgress: number) => void;
+    onSuccess: (res: students) => void;
+    onFailure: (err: Error) => void;
+  },
+  string,
+  Error
+>();
+
+export const getStudentDetailLecturer = createAsyncAction(
+  "REQUEST_GET_STUDENT_DETAIL_LECTURER",
+  "SUCCESS_GET_STUDENT_DETAIL_LECTURER",
+  "ERROR_GET_STUDENT_DETAIL_LECTURER"
+)<
+  {
+    id: string;
+    onSuccess: (res: student_to_lecturer, studentProgress: number) => void;
     onFailure: (err: Error) => void;
   },
   string,
@@ -53,6 +86,24 @@ export const postCreateStudent = createAsyncAction(
   Error
 >();
 
+export const postCreateStudentLecturer = createAsyncAction(
+  "REQUEST_POST_CREATE_STUDENT_LECTURER",
+  "SUCCESS_POST_CREATE_STUDENT_LECTURER",
+  "ERROR_GET_POST_CREATE_STUDENT_LECTURER"
+)<
+  {
+    data: {
+      class_id: string;
+      assigned_id: string;
+      assigned_students: students[];
+    };
+    onSuccess: (res: lecturers) => void;
+    onFailure: (err: Error) => void;
+  },
+  string,
+  Error
+>();
+
 export const putUpdateStudent = createAsyncAction(
   "REQUEST_PUT_UPDATE_STUDENT",
   "SUCCESS_PUT_UPDATE_STUDENT",
@@ -66,6 +117,24 @@ export const putUpdateStudent = createAsyncAction(
       nrp: string;
     };
     onSuccess: (res: students) => void;
+    onFailure: (err: Error) => void;
+  },
+  string,
+  Error
+>();
+
+export const putUpdateStudentLecturer = createAsyncAction(
+  "REQUEST_UPDATE_STUDENT_LECTURER",
+  "SUCCESS_UPDATE_STUDENT_LECTURER",
+  "ERROR_GET_UPDATE_STUDENT_LECTURER"
+)<
+  {
+    data: {
+      class_id: string;
+      assigned_id: string;
+      assigned_students: students[];
+    };
+    onSuccess: (res: lecturers) => void;
     onFailure: (err: Error) => void;
   },
   string,

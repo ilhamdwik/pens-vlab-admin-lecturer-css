@@ -74,6 +74,11 @@ export const postCreateStudentApi = `${baseUrl}/api/v1/admin/students/create`;
 export const putUpdateStudentApi = `${baseUrl}/api/v1/admin/students/update/`;
 export const deleteStudentApi = `${baseUrl}/api/v1/admin/students/delete/`;
 
+export const getStudentsApiLecturer = `${baseUrl}/api/v1/lecturer/students`;
+export const getStudentDetailApiLecturer = `${baseUrl}/api/v1/lecturer/students/`;
+export const postCreateStudentLecturerApi = `${baseUrl}/api/v1/lecturer/student/create`;
+export const putUpdateStudentLecturerApi = `${baseUrl}/api/v1/lecturer/student/update`;
+
 // users
 export const getUsersApi = `${baseUrl}/api/v1/admin/users`;
 export const getUserDetailApi = `${baseUrl}/api/v1/admin/users/`;

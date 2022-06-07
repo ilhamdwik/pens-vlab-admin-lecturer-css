@@ -242,7 +242,7 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Kembali
+                <i className="fas fa-arrow-left mr-4" /> Back
               </Button>
               <div className="text-xl font-bold">
                 {id ? "Edit" : "Tambah"} Lesson
@@ -280,11 +280,11 @@ const Upsert = () => {
                     />
                   </div>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Lesson pada Modul</span>
+                    <span>Lessons on Modules</span>
                     <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                      <div className="w-12">Urutan</div>
-                      <div className="w-20">Latihan?</div>
-                      <div className="flex-1">Nama</div>
+                      <div className="w-12">Order</div>
+                      <div className="w-20">Exercise?</div>
+                      <div className="flex-1">Name</div>
                     </div>
                     {lessonInModule.map((v) => (
                       <div className="flex space-x-4 p-2">
@@ -304,7 +304,7 @@ const Upsert = () => {
                 <div className="w-px bg-blueGray-200 dark:bg-blueGray-600" />
                 <div className="flex-1">
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Nama</span>
+                    <span>Name</span>
                     <Input
                       type="text"
                       placeholder="Nama Lesson"
@@ -314,7 +314,7 @@ const Upsert = () => {
                   </div>
 
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Urutan</span>
+                    <span>Order</span>
                     <Input
                       type="number"
                       placeholder="Urutan pada Modul"
@@ -326,14 +326,14 @@ const Upsert = () => {
               </div>
 
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Isi</span>
+                <span>Contents</span>
               </div>
               <div>
                 <MDEditor />
               </div>
 
               <div className="block text-gray-700 dark:text-gray-200 mt-10 mb-4">
-                <span>Latihan?</span>
+                <span>Exercise?</span>
                 <div>
                   <Switch
                     checked={isExercise}
@@ -356,8 +356,10 @@ const Upsert = () => {
                 <>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
                     <span className="mb-2">
-                      Syntax pada kode yang diharapkan (contoh : for, foreach,
-                      function, etc)
+                      The expected code syntax (example: for, foreach,
+                      functions, etc.)
+                      {/* Syntax pada kode yang diharapkan (contoh : for, foreach,
+                      function, etc) */}
                     </span>
                     {expectedCode.map((v, i) => {
                       return (
@@ -400,7 +402,7 @@ const Upsert = () => {
                     </Button>
                   </div>
                   <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                    <span>Output yang Diharapkan</span>
+                    <span>Expected Output</span>
                     <TextArea
                       placeholder="Output yang Diharapkan"
                       value={expectedOutput}
@@ -420,7 +422,7 @@ const Upsert = () => {
                 }
                 className="mt-6"
               >
-                <i className="fas fa-save mr-4" /> Simpan
+                <i className="fas fa-save mr-4" /> Save
               </Button>
             </form>
           </div>

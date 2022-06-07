@@ -99,11 +99,11 @@ const Lessons = () => {
           <article className="  prose dark:prose-light max-w-none">
             {detail ? (
               <div>
-                <h4>Isi</h4>
+                <h4>Contents</h4>
                 <Markdown markdown={detail?.contents ?? ""} />
                 {detail.is_exercise ? (
                   <div className="mt-4">
-                    <h4>Output yang Diharapkan</h4>
+                    <h4>Expected Output</h4>
                     <pre>
                       <code>{detail.submodule_exercises?.expected_output}</code>
                     </pre>
@@ -130,7 +130,7 @@ const Lessons = () => {
               <div className="text-xl font-bold">Lesson</div>
               <Link to="/admin/data/lessons/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> Tambah Lesson
+                  <i className="fas fa-plus mr-4" /> Add Lesson
                 </Button>
               </Link>
             </div>
@@ -164,10 +164,10 @@ const Lessons = () => {
                       );
                     },
                   },
-                  { Header: "Urutan pada Modul", accessor: "order" },
-                  { Header: "Nama", accessor: "title" },
+                  { Header: "Order on Module", accessor: "order" },
+                  { Header: "Name", accessor: "title" },
                   {
-                    Header: "Latihan?",
+                    Header: "Exercise?",
                     id: "is_exercise",
                     Cell: ({ row }) => {
                       const v = row.original as submodules;

@@ -114,7 +114,8 @@ function* postCreateStudentLecturerSaga({
     payload.onSuccess(response.data);
   } catch (err: any) {
     console.error(err.response);
-    payload.onFailure({ message: err?.response?.data } as Error);
+    // payload.onFailure({ message: err?.response?.data } as Error);
+    payload.onFailure(err);
   }
 }
 

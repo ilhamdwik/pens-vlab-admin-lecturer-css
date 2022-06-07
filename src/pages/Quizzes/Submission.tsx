@@ -101,16 +101,16 @@ const Submission = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Kembali
+                <i className="fas fa-arrow-left mr-4" /> Back
               </Button>
-              <div className="text-xl font-bold flex-1">Hasil Pekerjaan</div>
+              <div className="text-xl font-bold flex-1">Working result</div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
             <div>
               <div className="flex mt-2">
                 <div className="flex-1 mr-4">
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                    Nama
+                    Name
                   </div>
                   <div className="text-base">{data?.students?.name}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
@@ -118,7 +118,7 @@ const Submission = () => {
                   </div>
                   <div className="text-base">{data?.students?.nrp}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                    Kelas
+                    Class
                   </div>
                   <div className="text-base">
                     {data?.students?.classes?.kelas}{" "}
@@ -128,11 +128,12 @@ const Submission = () => {
                 </div>
                 <div className="flex-1 mr-4">
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                    Nama Kuis
+                    Name Quiz
                   </div>
                   <div className="text-base">{data?.quizzes?.title}</div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                    Sudah Dikumpulkan
+                    Already Collected
+                    {/* Sudah Dikumpulkan */}
                   </div>
                   <div>
                     {data?.is_submitted ? (
@@ -142,7 +143,8 @@ const Submission = () => {
                     )}
                   </div>
                   <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                    Dikumpulkan pada
+                    Collected on
+                    {/* Dikumpulkan pada */}
                   </div>
                   <div className="text-base">
                     {data?.time_submitted
@@ -156,7 +158,7 @@ const Submission = () => {
               <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
               <div className="">
                 <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                  Deskripsi Kuis
+                  Description Quiz
                 </div>
                 <pre className="prose dark:prose-light max-w-none font-body">
                   {data?.quizzes?.question}
@@ -164,7 +166,8 @@ const Submission = () => {
               </div>
               <div className="mt-8">
                 <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                  Output dari Mahasiswa
+                  Student Output
+                  {/* Output dari Mahasiswa */}
                 </div>
                 <article className="prose dark:prose-light max-w-none mt-2">
                   <pre>
@@ -174,7 +177,7 @@ const Submission = () => {
               </div>
               <div className="mt-8">
                 <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500 mt-4">
-                  Kode
+                  Code
                 </div>
                 <div className="h-80 border dark:border-blueGray-600">
                   <Editor
@@ -188,7 +191,7 @@ const Submission = () => {
                 <article className="prose dark:prose-light max-w-none mt-8">
                   {output ? (
                       <>
-                        <h4>Output Kode</h4>
+                        <h4>Output Code</h4>
                         <iframe 
                           title="output"
                           className="p-4 bg-gray-200 dark:bg-white max-w-none overflow-y-scroll scrollbar scrollbar-thin rounded-md" style={{ width: "100%", height: "auto", borderColor: "rgb(0 0 0)" }}
@@ -200,7 +203,7 @@ const Submission = () => {
                 </article>
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mt-8 mb-4">
-                <span>Nilai</span>
+                <span>Score</span>
                 <Input
                   type="number"
                   placeholder="Score"
@@ -221,7 +224,7 @@ const Submission = () => {
                 onClick={onUpdate}
                 className="w-full"
               >
-                <i className="fas fa-save mr-4" /> Simpan
+                <i className="fas fa-save mr-4" /> Save
               </Button>
             </div>
           </div>

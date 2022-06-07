@@ -18,19 +18,20 @@ export const Navbar = ({
 }) => {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
-  const [, , removeCookie] = useCookies(["user"]);
+  const [, , removeCookie] = useCookies(["token"]);
 
   const onLogout = () => {
     dispatch(setToken(undefined));
     dispatch(setUser());
-    removeCookie("user", {
-      domain:
-        process.env.REACT_APP_ENV === "DEV"
-          ? process.env.REACT_APP_DOMAIN_DEV
-          : process.env.REACT_APP_DOMAIN,
-      path: "/",
-    });
+    // removeCookie("user", {
+    //   domain:
+    //     process.env.REACT_APP_ENV === "DEV"
+    //       ? process.env.REACT_APP_DOMAIN_DEV
+    //       : process.env.REACT_APP_DOMAIN,
+    //   path: "/",
+    // });
     localStorage.removeItem("userCas");
+    removeCookie('token');
     document.location.href = "https://ethol.pens.ac.id";
   };
   return (

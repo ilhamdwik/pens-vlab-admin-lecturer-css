@@ -16,13 +16,13 @@ const routes: {
     path: "/admin/home", // the url
     adminPage: true,
     icon: "home", // the component being exported from icons/index.js
-    name: "Beranda", // name that appear in Sidebar
+    name: "Home", // name that appear in Sidebar
   },
   {
     path: "/lecturer/home", // the url
     adminPage: false,
     icon: "home", // the component being exported from icons/index.js
-    name: "Beranda", // name that appear in Sidebar
+    name: "Home", // name that appear in Sidebar
   },
 
   {
@@ -48,13 +48,13 @@ const routes: {
     ],
   },
   {
-    name: "Data Kuis",
+    name: "Data Quiz",
     adminPage: false,
     routes: [
       // submenu
       {
         path: "/lecturer/quizzes",
-        name: "Kuis",
+        name: "Quiz",
         icon: "comments",
       },
     ],
@@ -106,17 +106,17 @@ const routes: {
     routes: [
       {
         path: "/admin/data/classes",
-        name: "Kelas",
+        name: "Classes",
         icon: "house-user",
       },
       {
         path: "/admin/data/students",
-        name: "Mahasiswa",
+        name: "Student",
         icon: "users",
       },
       {
         path: "/admin/data/lecturers",
-        name: "Dosen",
+        name: "Lecturer",
         icon: "chalkboard-teacher",
       },
     ],

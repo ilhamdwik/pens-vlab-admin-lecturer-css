@@ -127,7 +127,7 @@ const Upsert = () => {
         onFailure: (err) => {
           nProgress.done();
           setLoading(false);
-          toast.error(err.message);
+          toast.error(err.response.data.message);
         },
       })
     );
@@ -154,7 +154,7 @@ const Upsert = () => {
           onFailure: (err) => {
             setLoading(false);
             toast.error(err.response.data.message);
-            history.replace("/lecturer/data/students");
+            // history.replace("/lecturer/data/students");
           },
         })
       );
@@ -172,10 +172,10 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Kembali
+                <i className="fas fa-arrow-left mr-4" /> Back
               </Button>
               <div className="text-xl font-bold">
-                Mahasiswa
+                Student
               </div>
             </div>
             <div className="h-px bg-blueGray-200 dark:bg-blueGray-700 my-4" />
@@ -200,11 +200,11 @@ const Upsert = () => {
                   onChange={(v) => setClassID(v)}
                 />
                 <div className="block text-gray-700 dark:text-gray-200 mt-4 mb-4">
-                  <span>Mahasiswa yang Ditambahkan</span>
+                  <span>Added Student</span>
                   <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                    <div className="w-12">Dipilih</div>
+                    <div className="w-12">Chosen</div>
                     <div className="w-20">NRP</div>
-                    <div className="flex-1">Nama</div>
+                    <div className="flex-1">Name</div>
                   </div>
                   {studentsData.map((v) => (
                     <div className="flex space-x-4 p-2">
@@ -247,7 +247,7 @@ const Upsert = () => {
                 disabled={(id ? false : !classID) || loading}
                 className=""
               >
-                <i className="fas fa-save mr-4" /> Simpan
+                <i className="fas fa-save mr-4" /> Save
               </Button>
             </form>
           </div>

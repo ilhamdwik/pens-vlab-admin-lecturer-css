@@ -158,7 +158,7 @@ const Upsert = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Kembali
+                <i className="fas fa-arrow-left mr-4" /> Back
               </Button>
               <div className="text-xl font-bold">
                 {id ? "Edit" : "Tambah"} Modul
@@ -185,10 +185,10 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Modul pada Course</span>
+                  <span>Modules on Course</span>
                   <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                    <div className="w-12">Urutan</div>
-                    <div className="flex-1">Nama</div>
+                    <div className="w-12">Order</div>
+                    <div className="flex-1">Name</div>
                   </div>
                   {modulesInCourse.map((v) => (
                     <div className="flex space-x-4 p-2">
@@ -200,7 +200,7 @@ const Upsert = () => {
               </div>
               <div className="flex-1 lg:w-1/3 flex flex-col">
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Nama</span>
+                  <span>Name</span>
                   <Input
                     type="text"
                     placeholder="Nama Modul"
@@ -209,7 +209,7 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Deskripsi</span>
+                  <span>Description</span>
                   <Input
                     type="text"
                     placeholder="Deskripsi Modul"
@@ -218,7 +218,7 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Urutan</span>
+                  <span>Order</span>
                   <Input
                     type="number"
                     placeholder="Urutan Modul"
@@ -233,7 +233,7 @@ const Upsert = () => {
                   }
                   className=""
                 >
-                  <i className="fas fa-save mr-4" /> Simpan
+                  <i className="fas fa-save mr-4" /> Save
                 </Button>
               </div>
             </form>

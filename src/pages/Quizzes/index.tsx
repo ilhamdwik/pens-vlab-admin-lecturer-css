@@ -43,10 +43,10 @@ const Quiz = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Kuis</div>
+              <div className="text-xl font-bold">Quiz</div>
               <Link to="/lecturer/quizzes/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> Tambah Kuis
+                  <i className="fas fa-plus mr-4" /> Add Quiz
                 </Button>
               </Link>
             </div>
@@ -85,7 +85,7 @@ const Quiz = () => {
                         <div className="flex mt-2">
                           <div className="flex-1 mr-4">
                             <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                              Tanggal dibuat
+                              Date created
                             </div>
                             <div>
                               {moment(v.createdAt).format(
@@ -95,7 +95,7 @@ const Quiz = () => {
                           </div>
                           <div className="flex-1 mr-4">
                             <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                              Ditugaskan untuk Kelas
+                              Assigned to Class
                             </div>
                             <div>{`${v.classes?.kelas} ${v.classes?.program} ${v.classes?.jurusan}`}</div>
                           </div>
@@ -103,7 +103,7 @@ const Quiz = () => {
                         <div className="flex mt-2">
                           <div className="flex-1 mr-4">
                             <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                              Batas Waktu Pengumpulan
+                              Submission Deadline
                             </div>
                             <div>
                               {moment(v.due_time).format("HH:mm, DD MMMM YYYY")}
@@ -111,7 +111,8 @@ const Quiz = () => {
                           </div>
                           <div className="flex-1 mr-4">
                             <div className="text-xs font-bold text-blueGray-400 dark:text-blueGray-500">
-                              Jumlah yang sudah mengumpulkan
+                              Amount already collected
+                              {/* Jumlah yang sudah mengumpulkan */}
                             </div>
                             <div>
                               {totalSubmitted} dari {v.student_to_quiz?.length}

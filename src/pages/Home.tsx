@@ -35,7 +35,7 @@ const Home = () => {
       <div className="grid grid-cols-1 gap-6">
         <Card className="bg-gradient-to-br dark:from-blue-900 dark:to-blue-800 from-blue-200 to-blue-100 shadow-none">
           <div>
-            <div>Halo, apa kabar ?</div>
+            <div>Hallo, how are you ?</div>
             <div className="text-xl font-bold mt-px">{user?.name}</div>
           </div>
         </Card>

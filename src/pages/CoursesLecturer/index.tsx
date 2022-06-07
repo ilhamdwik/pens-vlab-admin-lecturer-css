@@ -110,7 +110,7 @@ const CoursesLecturer = () => {
                     },
                   },
                   {
-                    Header: "Nama",
+                    Header: "Name",
                     id: "name",
                     Cell: ({ row }) => {
                       const v = row.original as prog_languages;

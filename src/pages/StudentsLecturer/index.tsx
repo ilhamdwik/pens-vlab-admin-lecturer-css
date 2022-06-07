@@ -80,7 +80,7 @@ const StudentsLecturer = () => {
               <>
               <div className="flex-1 mx-8">
                 <div className="text-base font-bold text-lightBlue-600">
-                  Nama
+                  Name
                 </div>
                 {formatName(detail.students?.name ?? "")}
                 <div className="text-base font-bold text-lightBlue-600 mt-4">
@@ -90,7 +90,7 @@ const StudentsLecturer = () => {
               </div>
               <div className="flex-1">
                 <div className="text-base font-bold text-lightBlue-600">
-                  Kelas
+                  Class
                 </div>
                 {detail.students?.classes?.kelas}
                 <div className="text-base font-bold text-lightBlue-600 mt-4">
@@ -136,17 +136,17 @@ const StudentsLecturer = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Progress Mahasiswa</div>
+              <div className="text-xl font-bold">Progress Student</div>
                 {data.length ? (
                   <Link to="/lecturer/data/students/update">
                     <Button>
-                      <i className="fas fa-plus mr-4" /> Edit Mahasiswa
+                      <i className="fas fa-plus mr-4" /> Edit Student
                     </Button>
                   </Link>
                 ) : (
                   <Link to="/lecturer/data/students/create">
                     <Button>
-                      <i className="fas fa-plus mr-4" /> Tambah Mahasiswa
+                      <i className="fas fa-plus mr-4" /> Add Mahasiswa
                     </Button>
                   </Link>
                 )}
@@ -171,7 +171,7 @@ const StudentsLecturer = () => {
                     },
                   },
                   {
-                    Header: "Nama",
+                    Header: "Name",
                     id: "name",
                     Cell: ({ row }) => {
                       const v = row.original as student_to_lecturer;
@@ -180,7 +180,7 @@ const StudentsLecturer = () => {
                   },
                   // { Header: "Nama", accessor: "name" },
                   {
-                    Header: "Kelas",
+                    Header: "Class",
                     id: "class",
                     Cell: ({ row }) => {
                       const v = row.original as student_to_lecturer;

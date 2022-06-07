@@ -71,7 +71,7 @@ const Modules = () => {
               <div className="text-xl font-bold">Modul</div>
               <Link to="/admin/data/modules/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> Tambah Modul
+                  <i className="fas fa-plus mr-4" /> Add Modul
                 </Button>
               </Link>
             </div>
@@ -103,9 +103,9 @@ const Modules = () => {
                       );
                     },
                   },
-                  { Header: "Urutan pada Course", accessor: "order" },
-                  { Header: "Nama", accessor: "title" },
-                  { Header: "Deskripsi", accessor: "overview" },
+                  { Header: "Order on Course", accessor: "order" },
+                  { Header: "Name", accessor: "title" },
+                  { Header: "Decription", accessor: "overview" },
 
                   {
                     Header: "Action",

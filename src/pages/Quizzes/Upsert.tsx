@@ -277,7 +277,7 @@ const Upsert = () => {
                   history.replace("/lecturer/quizzes");
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Kembali
+                <i className="fas fa-arrow-left mr-4" /> Back
               </Button>
               <div className="text-xl font-bold flex-1">
                 {id ? "Edit" : "Tambah"} Quiz
@@ -307,7 +307,7 @@ const Upsert = () => {
             >
               <div className="flex-1">
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Nama Kuis</span>
+                  <span>Quiz Name</span>
                   <Input
                     type="text"
                     placeholder="Nama Kuis"
@@ -323,7 +323,7 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Deskripsi Kuis</span>
+                  <span>Quiz Description</span>
                   <TextArea
                     placeholder="Deskripsi Kuis"
                     value={question}
@@ -331,7 +331,7 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Batas Waktu Pengumpulan</span>
+                  <span>Submission Deadline</span>
                   <div className="mt-2">
                     {serverTime ? (
                       <DatePicker
@@ -362,7 +362,7 @@ const Upsert = () => {
                   }
                   className="w-full"
                 >
-                  <i className="fas fa-save mr-4" /> Simpan
+                  <i className="fas fa-save mr-4" /> Save
                 </Button>
               </div>
               <div className="flex-1">
@@ -378,11 +378,11 @@ const Upsert = () => {
                   />
                 </div>
                 <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                  <span>Mahasiswa yang Ditugaskan</span>
+                  <span>Assigned Student</span>
                   <div className="flex space-x-4 font-bold-bold p-2 dark:bg-blueGray-700 bg-blueGray-100 mt-2 divide-gray-700">
-                    <div className="w-12">Dipilih</div>
+                    <div className="w-12">Chosen</div>
                     <div className="w-20">NRP</div>
-                    <div className="flex-1">Nama</div>
+                    <div className="flex-1">Name</div>
                   </div>
                   {studentsData.map((v) => (
                     <div className="flex space-x-4 p-2">

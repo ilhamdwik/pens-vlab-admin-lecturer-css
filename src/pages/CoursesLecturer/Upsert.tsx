@@ -120,7 +120,7 @@ const UpsertCourseLecturer = () => {
                   history.goBack();
                 }}
               >
-                <i className="fas fa-arrow-left mr-4" /> Kembali
+                <i className="fas fa-arrow-left mr-4" /> Back
               </Button>
               <div className="text-xl font-bold">
                 {id ? "Edit" : "Tambah"} Course
@@ -148,7 +148,7 @@ const UpsertCourseLecturer = () => {
                 />
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Nama Course</span>
+                <span>Course Name</span>
                 <Input
                   type="text"
                   placeholder="Nama Course"
@@ -157,7 +157,7 @@ const UpsertCourseLecturer = () => {
                 />
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
-                <span>Deskripsi Course</span>
+                <span>Decription Course</span>
                 <TextArea
                   placeholder="Deskripsi Course"
                   value={courseDescription}
@@ -175,14 +175,14 @@ const UpsertCourseLecturer = () => {
                     <div className="flex text-sm text-gray-600 dark:text-blueGray-200">
                       {isDragActive ? (
                         <label className="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                          <span>Drop file disini</span>
+                          <span>Drop file in here</span>
                         </label>
                       ) : (
                         <>
                           <label className="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                             <span>Upload file</span>
                           </label>
-                          <p className="pl-1">atau drag and drop</p>
+                          <p className="pl-1">or drag and drop</p>
                         </>
                       )}
                     </div>
@@ -210,7 +210,7 @@ const UpsertCourseLecturer = () => {
                 }
                 className=""
               >
-                <i className="fas fa-save mr-4" /> Simpan
+                <i className="fas fa-save mr-4" /> Save
               </Button>
             </form>
           </div>

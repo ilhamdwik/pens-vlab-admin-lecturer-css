@@ -71,10 +71,10 @@ const Students = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Mahasiswa</div>
+              <div className="text-xl font-bold">Student</div>
               <Link to="/admin/data/students/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> Tambah Mahasiswa
+                  <i className="fas fa-plus mr-4" /> Add Student
                 </Button>
               </Link>
             </div>
@@ -97,9 +97,9 @@ const Students = () => {
                       return v.nrp;
                     },
                   },
-                  { Header: "Nama", accessor: "name" },
+                  { Header: "Name", accessor: "name" },
                   {
-                    Header: "Kelas",
+                    Header: "Classes",
                     id: "class",
                     Cell: ({ row }) => {
                       const v = row.original as students;

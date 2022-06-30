@@ -1,0 +1,74 @@
+/* typing animation */
+.text-box{
+    overflow-x: hidden;
+    /* background:#000; */
+    background-color: rgb(239 246 255);
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    font-family: serif;
+    color:#333d51;
+    position: relative;
+  }
+  
+  h2::before, h2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  h2::before {
+    width: 130%;
+    height: 130%;
+    /* background: #000; */
+    background-color: rgb(239 246 255);
+    animation:  type 3s steps(25) 1s forwards infinite;
+  }
+  
+  .user-name{
+    color: #4E91FB;
+    font-weight: 900;
+    font-size:2rem;
+  }
+
+  h2::after {
+    opacity: 1;
+    width: 2px; 
+    background: #fff;
+    color:#fff;
+    animation:  type 3s steps(25) 1s forwards infinite,
+                blink 0.6s steps(15) infinite;
+  }
+  
+  @keyframes type {
+    to {
+      left: 110%;
+    }
+  }
+  
+  @keyframes blink {
+    0% , 50%{
+      opacity: 0;
+    } 
+    51%, 100% {
+       opacity: 1;
+    }
+  }
+
+  .typing-animation {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    height: 10vh;
+    font-family: Courier New, monospace;
+    /* background: #000; */
+    /* border-radius: 12px; */
+    margin: 50px;
+  /*   overflow-x: hidden; */
+  }

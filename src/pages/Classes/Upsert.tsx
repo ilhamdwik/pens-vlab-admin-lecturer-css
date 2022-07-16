@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Button from "../../components/Button";
 import { Card } from "../../components/Card";
 import Input from "../../components/Input";
+// import DropDown from "../../components/DropDown";
 import {
   getClassDetail,
   postCreateClass,
@@ -21,6 +22,18 @@ const UpsertClass = () => {
   const [program, setProgram] = React.useState("");
   const [jurusan, setJurusan] = React.useState("");
   const [kelas, setKelas] = React.useState("");
+
+  // const kelasDropdown = [
+  //   { label: '1', value: '1' },
+  //   { label: '2', value: '2' },
+  //   { label: '3', value: '3' },
+  //   { label: '4', value: '4' },
+  // ];
+
+  // const programStudiDropdown = [
+  //   { label: 'D3', value: 'D3' },
+  //   { label: 'D4', value: 'D4' },
+  // ];
 
   React.useEffect(() => {
     if (id) {
@@ -132,6 +145,13 @@ const UpsertClass = () => {
                   value={kelas}
                   onChange={(e) => setKelas(e.target.value)}
                 />
+                {/* <DropDown
+                  data={kelasDropdown.map((v) => ({
+                    value: v.value ?? "",
+                    name: `${v.label}`,
+                  }))}
+                  onChange={(v) => setKelas(v)}
+                /> */}
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-4">
                 <span>Program</span>
@@ -141,6 +161,13 @@ const UpsertClass = () => {
                   value={program}
                   onChange={(e) => setProgram(e.target.value)}
                 />
+                {/* <DropDown
+                  data={programStudiDropdown.map((v) => ({
+                    value: v.value ?? "",
+                    name: `${v.label}`,
+                  }))}
+                  onChange={(v) => setProgram(v)}
+                /> */}
               </div>
               <div className="block text-gray-700 dark:text-gray-200 mb-8">
                 <span>Jurusan</span>

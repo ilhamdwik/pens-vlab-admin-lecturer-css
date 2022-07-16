@@ -70,10 +70,10 @@ const Lecturers = () => {
         <Card className="">
           <div>
             <div className="flex justify-between items-center">
-              <div className="text-xl font-bold">Dosen</div>
+              <div className="text-xl font-bold">Lecturer</div>
               <Link to="/admin/data/lecturers/create">
                 <Button>
-                  <i className="fas fa-plus mr-4" /> Tambah Dosen
+                  <i className="fas fa-plus mr-4" />Add Lecturer
                 </Button>
               </Link>
             </div>

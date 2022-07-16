@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import "../assets/styles/home.css";
+import { formatName } from "../utils/formatter";
 // import { Card } from "../components/Card";
 // import nProgress from "nprogress";
 // import { getStudents } from "../redux/actions/studentsActions";
@@ -44,9 +45,15 @@ const Home = () => {
     //   </div>
     // </div>
     
-    <div className="typing-animation">
-      <div className="text-box">
-          <h2>Hello <span className="user-name">{user?.name}</span></h2>
+    // <div className="typing-animation">
+    //   <div className="text-box">
+    //       <h2 className="h2-typing-animation">Welcome <span className="user-name">{user?.name}</span></h2>
+    //   </div>
+    // </div>
+
+    <div className="wrapper">
+      <div className="typing-demo">
+        <h3 className="text-blue-600 dark:text-blueGray-200">{formatName(user?.name ?? "")}</h3>
       </div>
     </div>
   );

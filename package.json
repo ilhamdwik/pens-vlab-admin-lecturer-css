@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
+    "@date-io/date-fns": "^2.16.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@headlessui/react": "^1.2.0",
     "@monaco-editor/react": "^4.1.3",
